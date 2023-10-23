@@ -9,6 +9,11 @@ from PyQt5.QtCore import Qt, QTimer
 from keras.applications.inception_v3 import InceptionV3, preprocess_input, decode_predictions
 from keras.preprocessing import image
 
+from keras.models import load_model
+
+# Wczytaj swój model z pliku inception_model.h5
+custom_model = load_model('C:/Users/micha/OneDrive/Pulpit/AI/model_inception.h5')
+
 # Załaduj pre-trenowany model InceptionV3
 model = InceptionV3(weights='imagenet')
 
@@ -17,10 +22,12 @@ def predict_dog_breed(img_array):
     img = np.expand_dims(img_array, axis=0)
     img = preprocess_input(img)
 
-    predictions = model.predict(img)
-    decoded_predictions = decode_predictions(predictions, top=1)[0]
+    predictions = custom_model.predict(img)
+    # Tutaj zależy od formatu wyników Twojego modelu; możesz dostosować to do swojego modelu
+    # Na przykład, zakładając, że model zwraca etykietę rasy psa w formie indeksu:
+    predicted_breed_index = np.argmax(predictions)
+    return str(predicted_breed_index)  # Zwróć etykietę rasy w formie indeksu
 
-    return decoded_predictions[0][1]
 
 def convert_cv_qt(cv_img):
     rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
@@ -83,11 +90,11 @@ class DogBreedIdentifierApp(QWidget):
         if fname:
             # Wyświetl wybrane zdjęcie
             pixmap = QPixmap(fname)
-            self.label_image.setPixmap(pixmap.scaled(299, 299, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 299x299
+            self.label_image.setPixmap(pixmap.scaled(224, 224, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 224x224
 
             # Przetwarzanie i przewidywanie rasy
             try:
-                img = image.load_img(fname, target_size=(299, 299))
+                img = image.load_img(fname, target_size=(224, 224))
                 img_array = image.img_to_array(img)
                 predicted_breed = predict_dog_breed(img_array)
                 self.label_prediction.setText(f"Rasa: {predicted_breed}")
@@ -134,11 +141,11 @@ class DogBreedIdentifierApp(QWidget):
         if ret:
             self.hideCameraView()
             pixmap = convert_cv_qt(frame)
-            self.label_image.setPixmap(pixmap.scaled(299, 299, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 299x299
+            self.label_image.setPixmap(pixmap.scaled(224, 224, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 224x224
 
             # Przetwarzanie i przewidywanie rasy
             try:
-                frame_resized = cv2.resize(frame, (299, 299))  # zmień rozmiar na 299x299 dla modelu
+                frame_resized = cv2.resize(frame, (224, 224))  # zmień rozmiar na 224x224 dla modelu
                 img_array = image.img_to_array(frame_resized)
                 predicted_breed = predict_dog_breed(img_array)
                 self.label_prediction.setText(f"Rasa: {predicted_breed}")

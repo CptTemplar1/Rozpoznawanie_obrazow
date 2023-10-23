@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6afa9ed1-20e1-4bd8-97f1-5237c223b42b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Pictures/Bez nazwy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pictures/golden-retriever-177213599-2000-a30830f4d2b24635a5d01b3c5c64b9ef.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pictures/golden-retriever-puppy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pictures/images.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pictures/photo-1633722715463-d30f4f325e24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ownAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -12,6 +18,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -77,6 +90,7 @@
       <workItem from="1697889062335" duration="225000" />
       <workItem from="1697890142677" duration="2361000" />
       <workItem from="1697894119757" duration="759000" />
+      <workItem from="1698088478824" duration="39000" />
     </task>
     <servers />
   </component>
@@ -87,6 +101,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1697894762984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1698088366534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$AITraining.coverage" NAME="AITraining Coverage Results" MODIFIED="1697984979270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
