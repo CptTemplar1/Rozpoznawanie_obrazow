@@ -24,7 +24,7 @@ class_indices = training_set.class_indices
 labels = {v: k for k, v in class_indices.items()}
 
 # Zapisz słownik etykiet do pliku JSON
-with open('Models/InceptionV3_own/class_indices.json', 'w') as json_file:
+with open('../Models/InceptionV3_own/class_indices.json', 'w') as json_file:
     json.dump(labels, json_file)
 
 

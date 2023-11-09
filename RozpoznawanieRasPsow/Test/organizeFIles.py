@@ -47,9 +47,9 @@ def reorg_train_valid(data_dir, labels, valid_ratio):
 #@save
 def reorg_test(data_dir):
     """Organize the testing set for data loading during prediction."""
-    for test_file in os.listdir(os.path.join(data_dir, 'test')):
-        copyfile(os.path.join(data_dir, 'test', test_file),
-                os.path.join(data_dir, 'train_valid_test', 'test',
+    for test_file in os.listdir(os.path.join(data_dir, '')):
+        copyfile(os.path.join(data_dir, '', test_file),
+                 os.path.join(data_dir, 'train_valid_test', '',
                              'unknown'))
 
 

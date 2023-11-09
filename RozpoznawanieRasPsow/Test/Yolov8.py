@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 from PIL import Image
 
-model = YOLO("Models/yolov8m.pt")
+model = YOLO("../Models/yolov8m.pt")
 
 results = model.predict("Pictures/goldenRetriever1.jpg")
 result = results[0]

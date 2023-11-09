@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json
+
 import sys
 import cv2
 import numpy as np
@@ -9,31 +9,18 @@ from PyQt5.QtCore import Qt, QTimer
 from keras.applications.inception_v3 import InceptionV3, preprocess_input, decode_predictions
 from keras.preprocessing import image
 
-from keras.models import load_model
-
-# Wczytaj swój model z pliku inception_model.h5
-custom_model = load_model('C:/Users/micha/OneDrive/Pulpit/AI/model_inception.h5')
-
 # Załaduj pre-trenowany model InceptionV3
 model = InceptionV3(weights='imagenet')
-
-# Załaduj słownik etykiet z pliku JSON
-with open('Models/InceptionV3_own/class_indices.json') as json_file:
-    labels = json.load(json_file)
-
-# Teraz możesz użyć tego słownika do mapowania indeksów na etykiety
-
 
 # Funkcja do przewidywania rasy psa na podstawie obrazu
 def predict_dog_breed(img_array):
     img = np.expand_dims(img_array, axis=0)
     img = preprocess_input(img)
 
-    predictions = custom_model.predict(img)
-    predicted_breed_index = np.argmax(predictions)
-    # Użyj słownika labels do przemapowania indeksu na nazwę rasy
-    predicted_breed_name = labels[str(predicted_breed_index)]  # Zamieniamy indeks na string, ponieważ klucze JSON są zawsze w formacie string
-    return predicted_breed_name
+    predictions = model.predict(img)
+    decoded_predictions = decode_predictions(predictions, top=1)[0]
+
+    return decoded_predictions[0][1]
 
 def convert_cv_qt(cv_img):
     rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
@@ -96,11 +83,11 @@ class DogBreedIdentifierApp(QWidget):
         if fname:
             # Wyświetl wybrane zdjęcie
             pixmap = QPixmap(fname)
-            self.label_image.setPixmap(pixmap.scaled(224, 224, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 224x224
+            self.label_image.setPixmap(pixmap.scaled(299, 299, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 299x299
 
             # Przetwarzanie i przewidywanie rasy
             try:
-                img = image.load_img(fname, target_size=(224, 224))
+                img = image.load_img(fname, target_size=(299, 299))
                 img_array = image.img_to_array(img)
                 predicted_breed = predict_dog_breed(img_array)
                 self.label_prediction.setText(f"Rasa: {predicted_breed}")
@@ -147,11 +134,11 @@ class DogBreedIdentifierApp(QWidget):
         if ret:
             self.hideCameraView()
             pixmap = convert_cv_qt(frame)
-            self.label_image.setPixmap(pixmap.scaled(224, 224, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 224x224
+            self.label_image.setPixmap(pixmap.scaled(299, 299, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 299x299
 
             # Przetwarzanie i przewidywanie rasy
             try:
-                frame_resized = cv2.resize(frame, (224, 224))  # zmień rozmiar na 224x224 dla modelu
+                frame_resized = cv2.resize(frame, (299, 299))  # zmień rozmiar na 299x299 dla modelu
                 img_array = image.img_to_array(frame_resized)
                 predicted_breed = predict_dog_breed(img_array)
                 self.label_prediction.setText(f"Rasa: {predicted_breed}")
