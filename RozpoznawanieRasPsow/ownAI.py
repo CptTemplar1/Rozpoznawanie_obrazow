@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import json
 import sys
 import cv2
 import numpy as np
@@ -17,17 +17,23 @@ custom_model = load_model('C:/Users/micha/OneDrive/Pulpit/AI/model_inception.h5'
 # Załaduj pre-trenowany model InceptionV3
 model = InceptionV3(weights='imagenet')
 
+# Załaduj słownik etykiet z pliku JSON
+with open('Models/InceptionV3_own/class_indices.json') as json_file:
+    labels = json.load(json_file)
+
+# Teraz możesz użyć tego słownika do mapowania indeksów na etykiety
+
+
 # Funkcja do przewidywania rasy psa na podstawie obrazu
 def predict_dog_breed(img_array):
     img = np.expand_dims(img_array, axis=0)
     img = preprocess_input(img)
 
     predictions = custom_model.predict(img)
-    # Tutaj zależy od formatu wyników Twojego modelu; możesz dostosować to do swojego modelu
-    # Na przykład, zakładając, że model zwraca etykietę rasy psa w formie indeksu:
     predicted_breed_index = np.argmax(predictions)
-    return str(predicted_breed_index)  # Zwróć etykietę rasy w formie indeksu
-
+    # Użyj słownika labels do przemapowania indeksu na nazwę rasy
+    predicted_breed_name = labels[str(predicted_breed_index)]  # Zamieniamy indeks na string, ponieważ klucze JSON są zawsze w formacie string
+    return predicted_breed_name
 
 def convert_cv_qt(cv_img):
     rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
