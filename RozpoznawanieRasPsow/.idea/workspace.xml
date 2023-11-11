@@ -5,16 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6afa9ed1-20e1-4bd8-97f1-5237c223b42b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/YoloV8_own/best.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pictures/Upload-photo-image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pictures/germanShepherd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/ui_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/ui_main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/ui_main.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generoewaniepliku_py_z_ui.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/InceptionV3_own.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/InceptionV3_own.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/Yolov8.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Yolov8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/CreateDictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Utilities/CreateDictionary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/InceptionV3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UseModels/InceptionV3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/InceptionV3_own.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UseModels/InceptionV3_own.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Yolov8.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UseModels/Yolov8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/dbTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Utilities/dbTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/organizeFIles.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Utilities/organizeFIles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/MYui_main.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/ui_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/ui_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/ui_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen1_InceptionV3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen2_InceptionV3_own.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen3_YoloV8.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen4_statistics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RozpoznawanieRasPsow_QT.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../RozpoznawanieRasPsow_QT.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +44,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="2X4WuvXAL8M0eGlfycXtvDp6sC4" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -42,30 +55,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\UI_Functionality" />
+      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code" />
+      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\Utilities" />
       <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\UI" />
       <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Models\YoloV8_own" />
-      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Test" />
-      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Models\InceptionV3_own" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager" selected="Python.main">
     <configuration name="InceptionV3" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RozpoznawanieRasPsow" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,7 +160,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Test\dbTest.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/dbTest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,7 +169,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RozpoznawanieRasPsow" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -162,12 +177,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UI" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/UI_Functionality" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UI/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/UI_Functionality/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,12 +199,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UI" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\UI_Functionality\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -198,11 +213,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.InceptionV3" />
+      <item itemvalue="Python.dbTest" />
+      <item itemvalue="Python.InceptionV3_own" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.Yolov8" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.Yolov8" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.Yolov8" />
         <item itemvalue="Python.InceptionV3_own" />
         <item itemvalue="Python.dbTest" />
       </list>
@@ -225,7 +247,9 @@
       <workItem from="1699533792521" duration="11954000" />
       <workItem from="1699568924502" duration="779000" />
       <workItem from="1699613034301" duration="44000" />
-      <workItem from="1699613107428" duration="5046000" />
+      <workItem from="1699613107428" duration="6761000" />
+      <workItem from="1699699640135" duration="521000" />
+      <workItem from="1699700517082" duration="1782000" />
     </task>
     <servers />
   </component>
@@ -236,12 +260,12 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$CreateDictionary.coverage" NAME="CreateDictionary Coverage Results" MODIFIED="1699552214285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$Yolov8.coverage" NAME="Yolov8 Coverage Results" MODIFIED="1699614066715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$dbTest.coverage" NAME="dbTest Coverage Results" MODIFIED="1699541115194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1699564126524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$CreateDictionary.coverage" NAME="CreateDictionary Coverage Results" MODIFIED="1699552214285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$AITraining.coverage" NAME="AITraining Coverage Results" MODIFIED="1697984979270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$ownAI.coverage" NAME="ownAI Coverage Results" MODIFIED="1699552541963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1699697371517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UI" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main Coverage Results" MODIFIED="1699702271493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UI_Functionality" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1699701071669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

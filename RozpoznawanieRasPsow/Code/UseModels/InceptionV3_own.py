@@ -1,26 +1,57 @@
-# screen2.py
-
+# -*- coding: utf-8 -*-
+import json
+import sys
 import cv2
 import numpy as np
-from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QFileDialog, QVBoxLayout, QHBoxLayout
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt, QTimer
 from keras.applications.inception_v3 import InceptionV3, preprocess_input, decode_predictions
 from keras.preprocessing import image
 
-class Screen2(QWidget):
-    # Wczytaj swój model z pliku inception_model.h5
-    custom_model = load_model('C:/Users/micha/OneDrive/Pulpit/AI/model_inception.h5')
+from keras.models import load_model
 
-    # Załaduj pre-trenowany model InceptionV3
-    model = InceptionV3(weights='imagenet')
+# Wczytaj swój model z pliku inception_model.h5
+custom_model = load_model('C:/Users/micha/OneDrive/Pulpit/AI/model_inception.h5')
+
+# Załaduj pre-trenowany model InceptionV3
+model = InceptionV3(weights='imagenet')
+
+# Załaduj słownik etykiet z pliku JSON
+with open('../../Models/InceptionV3_own/class_indices.json') as json_file:
+    labels = json.load(json_file)
+
+# Teraz możesz użyć tego słownika do mapowania indeksów na etykiety
+
+
+# Funkcja do przewidywania rasy psa na podstawie obrazu
+def predict_dog_breed(img_array):
+    img = np.expand_dims(img_array, axis=0)
+    img = preprocess_input(img)
+
+    predictions = custom_model.predict(img)
+    predicted_breed_index = np.argmax(predictions)
+    # Użyj słownika labels do przemapowania indeksu na nazwę rasy
+    predicted_breed_name = labels[str(predicted_breed_index)]  # Zamieniamy indeks na string, ponieważ klucze JSON są zawsze w formacie string
+
+    return predicted_breed_name
+
+def convert_cv_qt(cv_img):
+    rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
+    h, w, ch = rgb_image.shape
+    bytes_per_line = ch * w
+    convert_to_Qt_format = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format_RGB888)
+    p = convert_to_Qt_format.scaled(640, 480, Qt.KeepAspectRatio)
+    return QPixmap.fromImage(p)
+
+class DogBreedIdentifierApp(QWidget):
     def __init__(self):
         super().__init__()
         self.camera = None
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('Rozpoznawanie rasy psa - Ekran 2')
+        self.setWindowTitle('Rozpoznawanie rasy psa')
 
         # Layout
         layout = QVBoxLayout()
@@ -72,7 +103,7 @@ class Screen2(QWidget):
             try:
                 img = image.load_img(fname, target_size=(224, 224))
                 img_array = image.img_to_array(img)
-                predicted_breed = self.predict_dog_breed(img_array)
+                predicted_breed = predict_dog_breed(img_array)
                 self.label_prediction.setText(f"Rasa: {predicted_breed}")
             except Exception as e:
                 self.label_prediction.setText(f"Błąd: {str(e)}")
@@ -110,37 +141,30 @@ class Screen2(QWidget):
     def updateFrame(self):
         ret, frame = self.camera.read()
         if ret:
-            self.camera_view.setPixmap(self.convert_cv_qt(frame))
+            self.camera_view.setPixmap(convert_cv_qt(frame))
 
     def captureImage(self):
         ret, frame = self.camera.read()
         if ret:
             self.hideCameraView()
-            pixmap = self.convert_cv_qt(frame)
+            pixmap = convert_cv_qt(frame)
             self.label_image.setPixmap(pixmap.scaled(224, 224, Qt.KeepAspectRatio, Qt.SmoothTransformation))  # przeskaluj do 224x224
 
             # Przetwarzanie i przewidywanie rasy
             try:
                 frame_resized = cv2.resize(frame, (224, 224))  # zmień rozmiar na 224x224 dla modelu
                 img_array = image.img_to_array(frame_resized)
-                predicted_breed = self.predict_dog_breed(img_array)
+                predicted_breed = predict_dog_breed(img_array)
                 self.label_prediction.setText(f"Rasa: {predicted_breed}")
             except Exception as e:
                 self.label_prediction.setText(f"Błąd: {str(e)}")
 
-    def predict_dog_breed(self, img_array):
-        img = np.expand_dims(img_array, axis=0)
-        img = preprocess_input(img)
+def main():
+    app = QApplication(sys.argv)
+    ex = DogBreedIdentifierApp()
+    ex.resize(800, 600)  # Możesz dostosować rozmiar okna aplikacji
+    ex.show()
+    sys.exit(app.exec_())
 
-        predictions = custom_model.predict(img)
-        predicted_breed_index = np.argmax(predictions)
-        predicted_breed_name = labels[str(predicted_breed_index)]
-        return predicted_breed_name
-
-    def convert_cv_qt(self, cv_img):
-        rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
-        h, w, ch = rgb_image.shape
-        bytes_per_line = ch * w
-        convert_to_Qt_format = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format_RGB888)
-        p = convert_to_Qt_format.scaled(640, 480, Qt.KeepAspectRatio)
-        return QPixmap.fromImage(p)
+if __name__ == '__main__':
+    main()

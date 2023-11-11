@@ -1,24 +1,21 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainrvpJdh.ui'
+## Form generated from reading UI file 'ui_mainnfRyNU.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.1
+## Created by: Qt User Interface Compiler version 5.15.8
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
-from PySide6.QtWidgets import *
+from PySide6.QtCore import *  # type: ignore
+from PySide6.QtGui import *  # type: ignore
+from PySide6.QtWidgets import *  # type: ignore
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        if MainWindow.objectName():
+        if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1000, 500)
         MainWindow.setMinimumSize(QSize(1000, 500))
@@ -51,6 +48,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.Btn_Toggle = QPushButton(self.frame_toggle)
         self.Btn_Toggle.setObjectName(u"Btn_Toggle")
+        self.Btn_Toggle.setEnabled(True)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -84,6 +82,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame_left_menu = QFrame(self.Content)
         self.frame_left_menu.setObjectName(u"frame_left_menu")
+        self.frame_left_menu.setEnabled(True)
         self.frame_left_menu.setMinimumSize(QSize(70, 0))
         self.frame_left_menu.setMaximumSize(QSize(70, 16777215))
         self.frame_left_menu.setStyleSheet(u"background-color: rgb(35, 35, 35);")
@@ -97,9 +96,7 @@ class Ui_MainWindow(object):
         self.frame_top_menus.setFrameShape(QFrame.NoFrame)
         self.frame_top_menus.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_top_menus)
-        self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.btn_page_1 = QPushButton(self.frame_top_menus)
         self.btn_page_1.setObjectName(u"btn_page_1")
         self.btn_page_1.setMinimumSize(QSize(0, 40))
@@ -142,6 +139,23 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.btn_page_3)
 
+        self.btn_page_4 = QPushButton(self.frame_top_menus)
+        self.btn_page_4.setObjectName(u"btn_page_4")
+        self.btn_page_4.setMinimumSize(QSize(0, 40))
+        self.btn_page_4.setAutoFillBackground(False)
+        self.btn_page_4.setStyleSheet(u"QPushButton {\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border: 0px solid;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"}")
+        self.btn_page_4.setCheckable(True)
+        self.btn_page_4.setChecked(True)
+
+        self.verticalLayout_4.addWidget(self.btn_page_4)
+
 
         self.verticalLayout_3.addWidget(self.frame_top_menus, 0, Qt.AlignTop)
 
@@ -150,6 +164,7 @@ class Ui_MainWindow(object):
 
         self.frame_pages = QFrame(self.Content)
         self.frame_pages.setObjectName(u"frame_pages")
+        self.frame_pages.setEnabled(True)
         self.frame_pages.setFrameShape(QFrame.StyledPanel)
         self.frame_pages.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_pages)
@@ -169,6 +184,18 @@ class Ui_MainWindow(object):
         self.label_1.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_7.addWidget(self.label_1)
+
+        self.PictureLabel = QLabel(self.page_1)
+        self.PictureLabel.setObjectName(u"PictureLabel")
+        self.PictureLabel.setFont(font)
+        self.PictureLabel.setStyleSheet(u"color: #FFF;")
+        self.PictureLabel.setTextFormat(Qt.AutoText)
+        self.PictureLabel.setPixmap(QPixmap(u"../../Pictures/Upload-photo-image.png"))
+        self.PictureLabel.setScaledContents(False)
+        self.PictureLabel.setAlignment(Qt.AlignCenter)
+        self.PictureLabel.setWordWrap(False)
+
+        self.verticalLayout_7.addWidget(self.PictureLabel)
 
         self.stackedWidget.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -197,6 +224,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.label)
 
         self.stackedWidget.addWidget(self.page_3)
+        self.page_4 = QWidget()
+        self.page_4.setObjectName(u"page_4")
+        self.verticalLayout_11 = QVBoxLayout(self.page_4)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.label_4 = QLabel(self.page_4)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet(u"color: #FFF;")
+        self.label_4.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_11.addWidget(self.label_4)
+
+        self.stackedWidget.addWidget(self.page_4)
 
         self.verticalLayout_5.addWidget(self.stackedWidget)
 
@@ -218,12 +258,15 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.Btn_Toggle.setText(QCoreApplication.translate("MainWindow", u"TOGGLE", None))
-        self.btn_page_1.setText(QCoreApplication.translate("MainWindow", u"Page 1", None))
-        self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"Page 2", None))
-        self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Page 3", None))
+        self.Btn_Toggle.setText(QCoreApplication.translate("MainWindow", u"ROZWI\u0143", None))
+        self.btn_page_1.setText(QCoreApplication.translate("MainWindow", u"Strona 1", None))
+        self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"Strona 2", None))
+        self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Strona 3", None))
+        self.btn_page_4.setText(QCoreApplication.translate("MainWindow", u"Strona 4", None))
         self.label_1.setText(QCoreApplication.translate("MainWindow", u"PAGE 1", None))
+        self.PictureLabel.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"PAGE 2", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"PAGE 3", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"PAGE 4", None))
     # retranslateUi
 
