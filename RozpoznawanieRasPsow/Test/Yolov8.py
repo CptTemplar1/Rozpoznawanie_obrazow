@@ -1,9 +1,9 @@
 from ultralytics import YOLO
 from PIL import Image
 
-model = YOLO("../Models/yolov8m.pt")
+model = YOLO("Models/YoloV8_own/best.pt")
 
-results = model.predict("Pictures/goldenRetriever1.jpg")
+results = model.predict("Pictures/germanShepherd.jpg")
 result = results[0]
 len(result.boxes)
 box = result.boxes[0]

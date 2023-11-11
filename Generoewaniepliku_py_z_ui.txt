@@ -1,0 +1,1 @@
+C:\Users\micha\anaconda3\envs\RozpoznawanieRasPsow_QT\Scripts\pyuic5.exe -x D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\UI\ui_main.ui -o D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\UI\ui_main.py

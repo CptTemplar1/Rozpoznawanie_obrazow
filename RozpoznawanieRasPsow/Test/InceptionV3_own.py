@@ -33,6 +33,7 @@ def predict_dog_breed(img_array):
     predicted_breed_index = np.argmax(predictions)
     # Użyj słownika labels do przemapowania indeksu na nazwę rasy
     predicted_breed_name = labels[str(predicted_breed_index)]  # Zamieniamy indeks na string, ponieważ klucze JSON są zawsze w formacie string
+
     return predicted_breed_name
 
 def convert_cv_qt(cv_img):
