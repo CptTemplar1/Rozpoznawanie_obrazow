@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6afa9ed1-20e1-4bd8-97f1-5237c223b42b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Generoewaniepliku_py_z_ui.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/CreateDictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Utilities/CreateDictionary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/InceptionV3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UseModels/InceptionV3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/InceptionV3_own.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UseModels/InceptionV3_own.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/Yolov8.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UseModels/Yolov8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/dbTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Utilities/dbTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/organizeFIles.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Utilities/organizeFIles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/MYui_main.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/ui_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/ui_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/ui_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screen1_InceptionV3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screen2_InceptionV3_own.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screen3_YoloV8.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screen4_statistics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RozpoznawanieRasPsow_QT.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../RozpoznawanieRasPsow_QT.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +232,7 @@
       <workItem from="1699613034301" duration="44000" />
       <workItem from="1699613107428" duration="6761000" />
       <workItem from="1699699640135" duration="521000" />
-      <workItem from="1699700517082" duration="1782000" />
+      <workItem from="1699700517082" duration="6244000" />
     </task>
     <servers />
   </component>
@@ -265,7 +248,7 @@
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$dbTest.coverage" NAME="dbTest Coverage Results" MODIFIED="1699541115194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$AITraining.coverage" NAME="AITraining Coverage Results" MODIFIED="1697984979270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$ownAI.coverage" NAME="ownAI Coverage Results" MODIFIED="1699552541963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main Coverage Results" MODIFIED="1699702271493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UI_Functionality" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main Coverage Results" MODIFIED="1699706657237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UI_Functionality" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1699701071669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

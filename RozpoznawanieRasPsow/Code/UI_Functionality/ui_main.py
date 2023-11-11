@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainnfRyNU.ui'
+## Form generated from reading UI file 'ui_mainzTFjMF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.8
 ##
@@ -173,21 +173,31 @@ class Ui_MainWindow(object):
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
-        self.verticalLayout_7 = QVBoxLayout(self.page_1)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.gridLayout = QGridLayout(self.page_1)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.label_6 = QLabel(self.page_1)
+        self.label_6.setObjectName(u"label_6")
+        font = QFont()
+        font.setPointSize(15)
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet(u"color: #FFF;")
+        self.label_6.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.label_6, 3, 0, 1, 1)
+
         self.label_1 = QLabel(self.page_1)
         self.label_1.setObjectName(u"label_1")
-        font = QFont()
-        font.setPointSize(40)
-        self.label_1.setFont(font)
+        font1 = QFont()
+        font1.setPointSize(40)
+        self.label_1.setFont(font1)
         self.label_1.setStyleSheet(u"color: #FFF;")
         self.label_1.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_7.addWidget(self.label_1)
+        self.gridLayout.addWidget(self.label_1, 0, 0, 1, 2)
 
         self.PictureLabel = QLabel(self.page_1)
         self.PictureLabel.setObjectName(u"PictureLabel")
-        self.PictureLabel.setFont(font)
+        self.PictureLabel.setFont(font1)
         self.PictureLabel.setStyleSheet(u"color: #FFF;")
         self.PictureLabel.setTextFormat(Qt.AutoText)
         self.PictureLabel.setPixmap(QPixmap(u"../../Pictures/Upload-photo-image.png"))
@@ -195,7 +205,23 @@ class Ui_MainWindow(object):
         self.PictureLabel.setAlignment(Qt.AlignCenter)
         self.PictureLabel.setWordWrap(False)
 
-        self.verticalLayout_7.addWidget(self.PictureLabel)
+        self.gridLayout.addWidget(self.PictureLabel, 1, 0, 1, 2)
+
+        self.detectedBreedLabel1 = QLabel(self.page_1)
+        self.detectedBreedLabel1.setObjectName(u"detectedBreedLabel1")
+        self.detectedBreedLabel1.setFont(font)
+        self.detectedBreedLabel1.setStyleSheet(u"color: #FFF;")
+        self.detectedBreedLabel1.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.detectedBreedLabel1, 3, 1, 1, 1)
+
+        self.detectBreedButton1 = QPushButton(self.page_1)
+        self.detectBreedButton1.setObjectName(u"detectBreedButton1")
+        font2 = QFont()
+        font2.setPointSize(12)
+        self.detectBreedButton1.setFont(font2)
+
+        self.gridLayout.addWidget(self.detectBreedButton1, 2, 0, 1, 2)
 
         self.stackedWidget.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -204,7 +230,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.label_2 = QLabel(self.page_2)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font)
+        self.label_2.setFont(font1)
         self.label_2.setStyleSheet(u"color: #FFF;")
         self.label_2.setAlignment(Qt.AlignCenter)
 
@@ -217,7 +243,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.label = QLabel(self.page_3)
         self.label.setObjectName(u"label")
-        self.label.setFont(font)
+        self.label.setFont(font1)
         self.label.setStyleSheet(u"color: #FFF;")
         self.label.setAlignment(Qt.AlignCenter)
 
@@ -230,7 +256,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.label_4 = QLabel(self.page_4)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font)
+        self.label_4.setFont(font1)
         self.label_4.setStyleSheet(u"color: #FFF;")
         self.label_4.setAlignment(Qt.AlignCenter)
 
@@ -263,8 +289,11 @@ class Ui_MainWindow(object):
         self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"Strona 2", None))
         self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Strona 3", None))
         self.btn_page_4.setText(QCoreApplication.translate("MainWindow", u"Strona 4", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Wykryta rasa psa to:", None))
         self.label_1.setText(QCoreApplication.translate("MainWindow", u"PAGE 1", None))
         self.PictureLabel.setText("")
+        self.detectedBreedLabel1.setText("")
+        self.detectBreedButton1.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciuh", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"PAGE 2", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"PAGE 3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"PAGE 4", None))
