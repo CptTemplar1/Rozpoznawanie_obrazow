@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6afa9ed1-20e1-4bd8-97f1-5237c223b42b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Pictures/upload.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/UI_Functionality/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/UI_Functionality/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UI_Functionality/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UI_Functionality/ui_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui_main.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UseModels/InceptionV3.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/UseModels/InceptionV3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UseModels/InceptionV3_own.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/UseModels/InceptionV3_own.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/UseModels/Yolov8.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/UseModels/Yolov8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Utilities/CreateDictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/Utilities/CreateDictionary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Utilities/dbTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/Utilities/dbTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Utilities/organizeFIles.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/Utilities/organizeFIles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Upload-photo-image.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,15 +65,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\UI_Functionality" />
+      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow" />
       <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code" />
+      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Pictures" />
+      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\UI_Functionality" />
       <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\Utilities" />
-      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\UI" />
-      <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Models\YoloV8_own" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="InceptionV3" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RozpoznawanieRasPsow" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -76,117 +86,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Test\InceptionV3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="InceptionV3_own (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RozpoznawanieRasPsow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/UseModels" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/UseModels/InceptionV3_own.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="InceptionV3_own" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RozpoznawanieRasPsow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Test\InceptionV3_own.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Yolov8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RozpoznawanieRasPsow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Test\Yolov8.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="dbTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RozpoznawanieRasPsow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/dbTest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RozpoznawanieRasPsow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code/UI_Functionality" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/UI_Functionality/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -217,21 +117,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.InceptionV3" />
-      <item itemvalue="Python.InceptionV3_own (1)" />
-      <item itemvalue="Python.dbTest" />
-      <item itemvalue="Python.InceptionV3_own" />
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.Yolov8" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.InceptionV3_own (1)" />
-        <item itemvalue="Python.InceptionV3_own" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.Yolov8" />
+        <item itemvalue="Python.main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -255,7 +144,7 @@
       <workItem from="1699613107428" duration="6761000" />
       <workItem from="1699699640135" duration="521000" />
       <workItem from="1699700517082" duration="6244000" />
-      <workItem from="1699887540760" duration="7027000" />
+      <workItem from="1699887540760" duration="11217000" />
     </task>
     <servers />
   </component>
@@ -272,9 +161,9 @@
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$InceptionV3__1_.coverage" NAME="InceptionV3 (1) Coverage Results" MODIFIED="1699875448782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UseModels" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$AITraining.coverage" NAME="AITraining Coverage Results" MODIFIED="1697984979270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$ownAI.coverage" NAME="ownAI Coverage Results" MODIFIED="1699552541963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main Coverage Results" MODIFIED="1699708178976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UI_Functionality" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1699901507285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$InceptionV3_own__1_.coverage" NAME="InceptionV3_own (1) Coverage Results" MODIFIED="1699889594750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UseModels" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1699897565961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UI_Functionality" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1699901774681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$InceptionV3_own.coverage" NAME="InceptionV3_own Coverage Results" MODIFIED="1699878937654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

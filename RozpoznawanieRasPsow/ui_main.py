@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainMgsJAz.ui'
+## Form generated from reading UI file 'ui_mainyQaaAk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.8
 ##
@@ -237,7 +237,7 @@ class Ui_MainWindow(object):
         self.uploadedPictureLabel.setFont(font2)
         self.uploadedPictureLabel.setStyleSheet(u"color: #FFF;")
         self.uploadedPictureLabel.setTextFormat(Qt.AutoText)
-        self.uploadedPictureLabel.setPixmap(QPixmap(u"../../Pictures/Upload-photo-image.png"))
+        self.uploadedPictureLabel.setPixmap(QPixmap(u"Pictures/upload.png"))
         self.uploadedPictureLabel.setScaledContents(False)
         self.uploadedPictureLabel.setAlignment(Qt.AlignCenter)
         self.uploadedPictureLabel.setWordWrap(False)

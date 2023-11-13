@@ -521,7 +521,7 @@ QPushButton:hover {
                  <enum>Qt::AutoText</enum>
                 </property>
                 <property name="pixmap">
-                 <pixmap>../../Pictures/Upload-photo-image.png</pixmap>
+                 <pixmap>Pictures/upload.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>false</bool>
