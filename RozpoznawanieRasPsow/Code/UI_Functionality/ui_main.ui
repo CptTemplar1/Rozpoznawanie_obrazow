@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>500</height>
+    <width>1080</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1000</width>
-    <height>500</height>
+    <width>1080</width>
+    <height>720</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>40</height>
+        <height>50</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -74,10 +74,16 @@
        </property>
        <item>
         <widget class="QFrame" name="frame_toggle">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>70</width>
-           <height>40</height>
+           <width>170</width>
+           <height>50</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -89,7 +95,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -106,22 +112,23 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="Btn_Toggle">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
+           <widget class="QLabel" name="label_5">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);
-border: 0px solid;</string>
+            <property name="font">
+             <font>
+              <pointsize>15</pointsize>
+             </font>
             </property>
             <property name="text">
-             <string>ROZWIŃ</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;MENU&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -136,6 +143,56 @@ border: 0px solid;</string>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Wybrany model sieci: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="selectedModelLabel">
+            <property name="font">
+             <font>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -172,13 +229,13 @@ border: 0px solid;</string>
          </property>
          <property name="minimumSize">
           <size>
-           <width>70</width>
+           <width>170</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>70</width>
+           <width>170</width>
            <height>16777215</height>
           </size>
          </property>
@@ -213,6 +270,48 @@ border: 0px solid;</string>
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="modelComboBox">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="editable">
+                <bool>false</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Pretrenowany InceptionV3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Własny InceptionV3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>YOLOv8</string>
+                </property>
+               </item>
+              </widget>
+             </item>
              <item>
               <widget class="QPushButton" name="btn_page_1">
                <property name="minimumSize">
@@ -332,6 +431,21 @@ QPushButton:hover {
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
@@ -339,6 +453,21 @@ QPushButton:hover {
             </property>
             <widget class="QWidget" name="page_1">
              <layout class="QGridLayout" name="gridLayout">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item row="3" column="0">
                <widget class="QLabel" name="label_6">
                 <property name="font">
@@ -368,7 +497,7 @@ QPushButton:hover {
                  <string notr="true">color: #FFF;</string>
                 </property>
                 <property name="text">
-                 <string>PAGE 1</string>
+                 <string>STRONA GŁÓWNA I JEDYNA</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -376,7 +505,7 @@ QPushButton:hover {
                </widget>
               </item>
               <item row="1" column="0" colspan="2">
-               <widget class="QLabel" name="PictureLabel">
+               <widget class="QLabel" name="uploadedPictureLabel">
                 <property name="font">
                  <font>
                   <pointsize>40</pointsize>
@@ -406,7 +535,7 @@ QPushButton:hover {
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QLabel" name="detectedBreedLabel1">
+               <widget class="QLabel" name="detectedBreedLabel">
                 <property name="font">
                  <font>
                   <pointsize>15</pointsize>
@@ -424,7 +553,7 @@ QPushButton:hover {
                </widget>
               </item>
               <item row="2" column="0" colspan="2">
-               <widget class="QPushButton" name="detectBreedButton1">
+               <widget class="QPushButton" name="detectBreedButton">
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
