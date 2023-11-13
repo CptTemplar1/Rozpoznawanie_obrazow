@@ -1,9 +1,9 @@
 from ultralytics import YOLO
 from PIL import Image
 
-model = YOLO("Models/YoloV8_own/best.pt")
+model = YOLO("D:/GitHub/Rozpoznawanie_obrazow/RozpoznawanieRasPsow/Models/YoloV8_own//best.pt")
 
-results = model.predict("Pictures/germanShepherd.jpg")
+results = model.predict("D:/GitHub/Rozpoznawanie_obrazow/RozpoznawanieRasPsow/Pictures/germanShepherd.jpg")
 result = results[0]
 len(result.boxes)
 box = result.boxes[0]
