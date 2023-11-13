@@ -21,6 +21,7 @@ import json
 # GUI FILE
 from ui_main import Ui_MainWindow
 
+
 # Klasy do obsługi kamery w oddzielnym wątku
 class CameraThread(QThread):
     change_pixmap_signal = Signal(np.ndarray)

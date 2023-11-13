@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6afa9ed1-20e1-4bd8-97f1-5237c223b42b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OtherCode/UseModels/Yolov8.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/UseModels/Yolov8.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui_main.ui" afterDir="false" />
@@ -26,8 +25,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -137,7 +142,7 @@
       <workItem from="1699613107428" duration="6761000" />
       <workItem from="1699699640135" duration="521000" />
       <workItem from="1699700517082" duration="6244000" />
-      <workItem from="1699887540760" duration="17653000" />
+      <workItem from="1699887540760" duration="18465000" />
     </task>
     <servers />
   </component>
