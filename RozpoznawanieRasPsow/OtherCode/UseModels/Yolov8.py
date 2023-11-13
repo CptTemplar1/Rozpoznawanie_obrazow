@@ -1,3 +1,4 @@
+from keras.preprocessing import image
 from ultralytics import YOLO
 from PIL import Image
 

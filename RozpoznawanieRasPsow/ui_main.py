@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainyQaaAk.ui'
+## Form generated from reading UI file 'ui_mainDdinXu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.8
 ##
@@ -202,38 +202,31 @@ class Ui_MainWindow(object):
         self.frame_pages.setEnabled(True)
         self.frame_pages.setFrameShape(QFrame.StyledPanel)
         self.frame_pages.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.frame_pages)
-        self.verticalLayout_5.setSpacing(0)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_pages)
+        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget = QStackedWidget(self.frame_pages)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
         self.gridLayout = QGridLayout(self.page_1)
-        self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setHorizontalSpacing(0)
+        self.gridLayout.setVerticalSpacing(15)
+        self.gridLayout.setContentsMargins(0, 15, 0, 0)
         self.label_6 = QLabel(self.page_1)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setFont(font)
         self.label_6.setStyleSheet(u"color: #FFF;")
         self.label_6.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.label_6, 3, 0, 1, 1)
-
-        self.label_1 = QLabel(self.page_1)
-        self.label_1.setObjectName(u"label_1")
-        font2 = QFont()
-        font2.setPointSize(40)
-        self.label_1.setFont(font2)
-        self.label_1.setStyleSheet(u"color: #FFF;")
-        self.label_1.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.label_1, 0, 0, 1, 2)
+        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
 
         self.uploadedPictureLabel = QLabel(self.page_1)
         self.uploadedPictureLabel.setObjectName(u"uploadedPictureLabel")
+        font2 = QFont()
+        font2.setPointSize(40)
         self.uploadedPictureLabel.setFont(font2)
         self.uploadedPictureLabel.setStyleSheet(u"color: #FFF;")
         self.uploadedPictureLabel.setTextFormat(Qt.AutoText)
@@ -242,7 +235,7 @@ class Ui_MainWindow(object):
         self.uploadedPictureLabel.setAlignment(Qt.AlignCenter)
         self.uploadedPictureLabel.setWordWrap(False)
 
-        self.gridLayout.addWidget(self.uploadedPictureLabel, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.uploadedPictureLabel, 2, 0, 1, 3)
 
         self.detectedBreedLabel = QLabel(self.page_1)
         self.detectedBreedLabel.setObjectName(u"detectedBreedLabel")
@@ -250,15 +243,30 @@ class Ui_MainWindow(object):
         self.detectedBreedLabel.setStyleSheet(u"color: #FFF;")
         self.detectedBreedLabel.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.detectedBreedLabel, 3, 1, 1, 1)
+        self.gridLayout.addWidget(self.detectedBreedLabel, 5, 1, 1, 2)
 
         self.detectBreedButton = QPushButton(self.page_1)
         self.detectBreedButton.setObjectName(u"detectBreedButton")
+        sizePolicy.setHeightForWidth(self.detectBreedButton.sizePolicy().hasHeightForWidth())
+        self.detectBreedButton.setSizePolicy(sizePolicy)
+        self.detectBreedButton.setMaximumSize(QSize(400, 50))
         font3 = QFont()
         font3.setPointSize(12)
         self.detectBreedButton.setFont(font3)
 
-        self.gridLayout.addWidget(self.detectBreedButton, 2, 0, 1, 2)
+        self.gridLayout.addWidget(self.detectBreedButton, 4, 1, 1, 1)
+
+        self.openCameraButton = QPushButton(self.page_1)
+        self.openCameraButton.setObjectName(u"openCameraButton")
+        sizePolicy.setHeightForWidth(self.openCameraButton.sizePolicy().hasHeightForWidth())
+        self.openCameraButton.setSizePolicy(sizePolicy)
+        self.openCameraButton.setMaximumSize(QSize(16777215, 35))
+        self.openCameraButton.setFont(font3)
+        self.openCameraButton.setContextMenuPolicy(Qt.DefaultContextMenu)
+        self.openCameraButton.setLayoutDirection(Qt.LeftToRight)
+        self.openCameraButton.setAutoFillBackground(False)
+
+        self.gridLayout.addWidget(self.openCameraButton, 1, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -301,7 +309,7 @@ class Ui_MainWindow(object):
 
         self.stackedWidget.addWidget(self.page_4)
 
-        self.verticalLayout_5.addWidget(self.stackedWidget)
+        self.horizontalLayout_5.addWidget(self.stackedWidget)
 
 
         self.horizontalLayout_2.addWidget(self.frame_pages)
@@ -333,10 +341,10 @@ class Ui_MainWindow(object):
         self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Strona 3", None))
         self.btn_page_4.setText(QCoreApplication.translate("MainWindow", u"Strona 4", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Wykryta rasa psa to:", None))
-        self.label_1.setText(QCoreApplication.translate("MainWindow", u"STRONA G\u0141\u00d3WNA I JEDYNA", None))
         self.uploadedPictureLabel.setText("")
         self.detectedBreedLabel.setText("")
-        self.detectBreedButton.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciuh", None))
+        self.detectBreedButton.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciu", None))
+        self.openCameraButton.setText(QCoreApplication.translate("MainWindow", u"Otw\u00f3rz kamer\u0119", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"PAGE 2", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"PAGE 3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"PAGE 4", None))

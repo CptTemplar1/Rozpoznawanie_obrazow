@@ -1,12 +1,14 @@
 import sys
 import platform
 
+import cv2
 from PIL.ImageQt import ImageQt
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt, QEvent)
+                            QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence,
                            QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient, QImage)
+from PySide6.QtMultimedia import QCamera
 from PySide6.QtWidgets import *
 from PIL import Image
 from keras.applications.inception_v3 import InceptionV3, preprocess_input, decode_predictions
@@ -19,9 +21,75 @@ import json
 # GUI FILE
 from ui_main import Ui_MainWindow
 
+# Klasy do obsługi kamery w oddzielnym wątku
+class CameraThread(QThread):
+    change_pixmap_signal = Signal(np.ndarray)
 
+    def run(self):
+        # Użycie pierwszej dostępnej kamery
+        cap = cv2.VideoCapture(0)
+
+        while True:
+            ret, cv_img = cap.read()
+            if ret:
+                self.change_pixmap_signal.emit(cv_img)
+            else:
+                break
+
+        # Zwolnienie kamery po zakończeniu
+        cap.release()
+
+
+# Klasa okna kamery
+class CameraWindow(QWidget):
+    # Zmienna przechowująca obraz w postaci numpy array
+    cv2_img = None
+
+    def __init__(self, main_window):
+        super().__init__()
+        self.main_window = main_window
+
+        self.layout = QVBoxLayout()
+
+        self.image_label = QLabel("Zdjęcie pojawi się tutaj")
+        self.capture_button = QPushButton("Zrób zdjęcie")
+        self.capture_button.clicked.connect(self.capture_image)
+
+        self.layout.addWidget(self.image_label)
+        self.layout.addWidget(self.capture_button)
+
+        self.setLayout(self.layout)
+
+        # Wątek kamery
+        self.thread = CameraThread()
+        self.thread.change_pixmap_signal.connect(self.update_image)
+        self.thread.start()
+
+    @Slot(np.ndarray)
+    def update_image(self, cv_img):
+        """ Aktualizacja obrazu w QLabel """
+        qt_img = self.convert_cv_qt(cv_img)
+        self.image_label.setPixmap(qt_img)
+        self.cv_img = cv_img
+
+    def capture_image(self):
+        """ Zatrzymuje wątek kamery i przekazuje obraz do MainWindow """
+        self.thread.terminate()
+        self.main_window.set_captured_image(self.image_label.pixmap(), self.cv_img)
+        self.close()
+
+    def convert_cv_qt(self, cv_img):
+        """ Konwersja obrazu OpenCV na QPixmap """
+        rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
+        h, w, ch = rgb_image.shape
+        bytes_per_line = ch * w
+        convert_to_Qt_format = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format_RGB888)
+        return QPixmap.fromImage(convert_to_Qt_format)
+
+
+# Klasa głównego okna aplikacji
 class MainWindow(QMainWindow):
-    # Zmienna przechowująca ścieżkę do ostatnio wczytanego obrazu
+    # Zmienna przechowująca ostatnio wczytany obraz w postaci Image
     lastly_uploaded_picture = None
 
     # Zmienne okreslające poszczególne modele sieci neuronowych
@@ -58,6 +126,10 @@ class MainWindow(QMainWindow):
         # Wywołanie metody przewidującej rasę psa po kliknięciu przycisku
         # Odpowiednia metoda jest wywoływana w funkcji on_detect_breed_button_clicked w zależności od wybranego modelu
         self.ui.detectBreedButton.clicked.connect(self.on_detect_breed_button_clicked)
+
+        # Wywołanie metody otwierającej kamerę po kliknięciu przycisku
+        self.ui.openCameraButton.clicked.connect(self.open_camera)
+
         ########################################################################
 
         # PAGE 2
@@ -111,7 +183,7 @@ class MainWindow(QMainWindow):
         # Otwórz okno wyboru pliku
         file_path, _ = QFileDialog.getOpenFileName()
         if file_path:
-            self.lastly_uploaded_picture = file_path
+            self.lastly_uploaded_picture = Image.open(file_path)
             # Wczytaj i przeskaluj obraz
             pixmap = QPixmap(file_path)
             pixmap = pixmap.scaled(512, 512, Qt.KeepAspectRatio, Qt.SmoothTransformation)
@@ -121,7 +193,7 @@ class MainWindow(QMainWindow):
     # Funkcja do przewidywania rasy psa na podstawie obrazu przy pomocy modelu InceptionV3
     def predict_dog_breed_inceptionV3(self):
         try:
-            img = image.load_img(self.lastly_uploaded_picture, target_size=(299, 299))
+            img = self.lastly_uploaded_picture.resize((299, 299))
             img_array = image.img_to_array(img)
 
             img = np.expand_dims(img_array, axis=0)
@@ -138,7 +210,7 @@ class MainWindow(QMainWindow):
     # Funkcja do przewidywania rasy psa na podstawie obrazu przy pomocy naszego własnego modelu InceptionV3
     def predict_dog_breed_inceptionV3_own(self):
         try:
-            img = image.load_img(self.lastly_uploaded_picture, target_size=(224, 224))
+            img = self.lastly_uploaded_picture.resize((224, 224))
             img_array = image.img_to_array(img)
 
             img = np.expand_dims(img_array, axis=0)
@@ -167,7 +239,7 @@ class MainWindow(QMainWindow):
             # print(result.names)
 
             # Wypisywanie wszystkich wyników
-            #for box in result.boxes:
+            # for box in result.boxes:
             #    class_id = result.names[box.cls[0].item()]
             #    cords = box.xyxy[0].tolist()
             #    cords = [round(x) for x in cords]
@@ -195,6 +267,18 @@ class MainWindow(QMainWindow):
         qimage = QImage(data, img.size[0], img.size[1], QImage.Format_ARGB32)
         qpixmap = QPixmap.fromImage(qimage)
         return qpixmap
+
+    @Slot()
+    def open_camera(self):
+        self.cameraWindow = CameraWindow(self)
+        self.cameraWindow.show()
+
+    def set_captured_image(self, pixmap, cv_img):
+        """ Ustawia zrobione zdjęcie w QLabel oraz w zmiennej lastly_uploaded_picture"""
+        if pixmap:
+            self.ui.uploadedPictureLabel.setPixmap(pixmap)
+            img = Image.fromarray(cv_img)
+            self.lastly_uploaded_picture = img
 
 
 if __name__ == "__main__":
