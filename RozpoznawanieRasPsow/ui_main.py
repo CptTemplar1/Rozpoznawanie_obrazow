@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainNPaOVi.ui'
+## Form generated from reading UI file 'ui_mainlwDhbu.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.8
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
 
 
 class Ui_MainWindow(object):
@@ -114,12 +114,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.frame_top_menus = QFrame(self.frame_left_menu)
         self.frame_top_menus.setObjectName(u"frame_top_menus")
+        self.frame_top_menus.setMinimumSize(QSize(0, 215))
+        self.frame_top_menus.setMouseTracking(False)
         self.frame_top_menus.setFrameShape(QFrame.NoFrame)
         self.frame_top_menus.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_top_menus)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 10, 0, 0)
+        self.label_7 = QLabel(self.frame_top_menus)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setMinimumSize(QSize(0, 18))
+
+        self.verticalLayout_4.addWidget(self.label_7)
+
         self.modelComboBox = QComboBox(self.frame_top_menus)
         self.modelComboBox.addItem("")
         self.modelComboBox.addItem("")
@@ -266,27 +274,19 @@ class Ui_MainWindow(object):
         self.gridLayout.setHorizontalSpacing(0)
         self.gridLayout.setVerticalSpacing(15)
         self.gridLayout.setContentsMargins(0, 15, 0, 0)
-        self.label_6 = QLabel(self.page_1)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font)
-        self.label_6.setStyleSheet(u"color: #FFF;")
-        self.label_6.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
-
-        self.uploadedPictureLabel = QLabel(self.page_1)
-        self.uploadedPictureLabel.setObjectName(u"uploadedPictureLabel")
+        self.openCameraButton = QPushButton(self.page_1)
+        self.openCameraButton.setObjectName(u"openCameraButton")
+        sizePolicy.setHeightForWidth(self.openCameraButton.sizePolicy().hasHeightForWidth())
+        self.openCameraButton.setSizePolicy(sizePolicy)
+        self.openCameraButton.setMaximumSize(QSize(16777215, 35))
         font2 = QFont()
-        font2.setPointSize(40)
-        self.uploadedPictureLabel.setFont(font2)
-        self.uploadedPictureLabel.setStyleSheet(u"color: #FFF;")
-        self.uploadedPictureLabel.setTextFormat(Qt.AutoText)
-        self.uploadedPictureLabel.setPixmap(QPixmap(u"Pictures/upload.png"))
-        self.uploadedPictureLabel.setScaledContents(False)
-        self.uploadedPictureLabel.setAlignment(Qt.AlignCenter)
-        self.uploadedPictureLabel.setWordWrap(False)
+        font2.setPointSize(12)
+        self.openCameraButton.setFont(font2)
+        self.openCameraButton.setContextMenuPolicy(Qt.DefaultContextMenu)
+        self.openCameraButton.setLayoutDirection(Qt.LeftToRight)
+        self.openCameraButton.setAutoFillBackground(False)
 
-        self.gridLayout.addWidget(self.uploadedPictureLabel, 2, 0, 1, 3)
+        self.gridLayout.addWidget(self.openCameraButton, 1, 1, 1, 1)
 
         self.detectedBreedLabel = QLabel(self.page_1)
         self.detectedBreedLabel.setObjectName(u"detectedBreedLabel")
@@ -296,28 +296,36 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.detectedBreedLabel, 5, 1, 1, 2)
 
+        self.uploadedPictureLabel = QLabel(self.page_1)
+        self.uploadedPictureLabel.setObjectName(u"uploadedPictureLabel")
+        font3 = QFont()
+        font3.setPointSize(40)
+        self.uploadedPictureLabel.setFont(font3)
+        self.uploadedPictureLabel.setStyleSheet(u"color: #FFF;")
+        self.uploadedPictureLabel.setTextFormat(Qt.AutoText)
+        self.uploadedPictureLabel.setPixmap(QPixmap(u"Pictures/upload.png"))
+        self.uploadedPictureLabel.setScaledContents(False)
+        self.uploadedPictureLabel.setAlignment(Qt.AlignCenter)
+        self.uploadedPictureLabel.setWordWrap(False)
+
+        self.gridLayout.addWidget(self.uploadedPictureLabel, 2, 0, 1, 3)
+
         self.detectBreedButton = QPushButton(self.page_1)
         self.detectBreedButton.setObjectName(u"detectBreedButton")
         sizePolicy.setHeightForWidth(self.detectBreedButton.sizePolicy().hasHeightForWidth())
         self.detectBreedButton.setSizePolicy(sizePolicy)
         self.detectBreedButton.setMaximumSize(QSize(400, 50))
-        font3 = QFont()
-        font3.setPointSize(12)
-        self.detectBreedButton.setFont(font3)
+        self.detectBreedButton.setFont(font2)
 
         self.gridLayout.addWidget(self.detectBreedButton, 4, 1, 1, 1)
 
-        self.openCameraButton = QPushButton(self.page_1)
-        self.openCameraButton.setObjectName(u"openCameraButton")
-        sizePolicy.setHeightForWidth(self.openCameraButton.sizePolicy().hasHeightForWidth())
-        self.openCameraButton.setSizePolicy(sizePolicy)
-        self.openCameraButton.setMaximumSize(QSize(16777215, 35))
-        self.openCameraButton.setFont(font3)
-        self.openCameraButton.setContextMenuPolicy(Qt.DefaultContextMenu)
-        self.openCameraButton.setLayoutDirection(Qt.LeftToRight)
-        self.openCameraButton.setAutoFillBackground(False)
+        self.label_6 = QLabel(self.page_1)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet(u"color: #FFF;")
+        self.label_6.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.openCameraButton, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -326,7 +334,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.label_2 = QLabel(self.page_2)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font2)
+        self.label_2.setFont(font3)
         self.label_2.setStyleSheet(u"color: #FFF;")
         self.label_2.setAlignment(Qt.AlignCenter)
 
@@ -339,7 +347,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.label = QLabel(self.page_3)
         self.label.setObjectName(u"label")
-        self.label.setFont(font2)
+        self.label.setFont(font3)
         self.label.setStyleSheet(u"color: #FFF;")
         self.label.setAlignment(Qt.AlignCenter)
 
@@ -352,7 +360,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.label_4 = QLabel(self.page_4)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font2)
+        self.label_4.setFont(font3)
         self.label_4.setStyleSheet(u"color: #FFF;")
         self.label_4.setAlignment(Qt.AlignCenter)
 
@@ -383,6 +391,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">MENU</span></p></body></html>", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">Wybrany model sieci: </span></p></body></html>", None))
         self.selectedModelLabel.setText("")
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:white;\">Wybierz model sieci</span></p></body></html>", None))
         self.modelComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Pretrenowany InceptionV3", None))
         self.modelComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"W\u0142asny InceptionV3", None))
         self.modelComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"YOLOv8", None))
@@ -391,11 +400,11 @@ class Ui_MainWindow(object):
         self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"Strona 2", None))
         self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Strona 3", None))
         self.btn_page_4.setText(QCoreApplication.translate("MainWindow", u"Strona 4", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Wykryta rasa psa to:", None))
-        self.uploadedPictureLabel.setText("")
-        self.detectedBreedLabel.setText("")
-        self.detectBreedButton.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciu", None))
         self.openCameraButton.setText(QCoreApplication.translate("MainWindow", u"Otw\u00f3rz kamer\u0119", None))
+        self.detectedBreedLabel.setText("")
+        self.uploadedPictureLabel.setText("")
+        self.detectBreedButton.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciu", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Wykryta rasa psa to:", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"PAGE 2", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"PAGE 3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"PAGE 4", None))
