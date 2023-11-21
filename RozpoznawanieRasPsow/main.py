@@ -103,6 +103,11 @@ class MainWindow(QMainWindow):
     with open('Models/InceptionV3_own/class_indices.json') as json_file:
         labels = json.load(json_file)
 
+    # Załadowanie pliku z listą ras psów, aby ograniczyć wyniki do samych ras psów w modelu InceptionV3
+    with open('Models/InceptionV3/class_restrictions.json') as json_file:
+        dog_breeds_data = json.load(json_file)
+        dog_breeds_list = dog_breeds_data.get("dog_breeds", [])
+
     # Zmienna przechowująca aktualnie wybrany model
     selected_model = None
 
@@ -172,6 +177,12 @@ class MainWindow(QMainWindow):
     # Sprawdza, który model jest wybrany i wywołuje odpowiednią funkcję
     def on_detect_breed_button_clicked(self):
         index = self.ui.modelComboBox.currentIndex()
+
+        # Sprawdź, czy lastly_uploaded_picture jest puste przed wywołaniem funkcji, aby upewnić się, że obraz został wczytany
+        if self.lastly_uploaded_picture is None:
+            QMessageBox.warning(self, 'Błąd', 'Proszę wczytać zdjęcie przed próbą uruchomienia rozpoznawania rasy psa.')
+            return
+
         if index == 0:
             self.predict_dog_breed_inceptionV3()
         elif index == 1:
@@ -202,9 +213,15 @@ class MainWindow(QMainWindow):
 
             predictions = self.selected_model.predict(img)
             decoded_predictions = decode_predictions(predictions, top=1)[0]
-            predicted_breed = decoded_predictions[0][1]
+            predicted_breed_code = decoded_predictions[0][0]
 
-            self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
+            # Sprawdzenie, czy przewidywany kod rasy znajduje się w zbiorze etykiet dla naszego własnego modelu InceptionV3
+            # Robimy to, bo pretrenowany model InceptionV3 rozpoznaje więcej rzeczy niż tylko rasy psów
+            if predicted_breed_code in self.dog_breeds_list:
+                predicted_breed = labels[predicted_breed_code]
+                self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
+            else:
+                self.ui.detectedBreedLabel.setText("Nie wykryto żadnej rasy psa")
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
@@ -255,8 +272,10 @@ class MainWindow(QMainWindow):
             pixmap = pixmap.scaled(512, 512, Qt.KeepAspectRatio, Qt.SmoothTransformation)
             self.ui.uploadedPictureLabel.setPixmap(pixmap)
 
-            predicted_breed = result.names[box.cls[0].item()]
-            self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
+            # Wyświetla nazwę wykrytej rasy psa, jeśli została wykryta
+            if result.names[box.cls[0].item()] != "":
+                predicted_breed = result.names[box.cls[0].item()]
+                self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
