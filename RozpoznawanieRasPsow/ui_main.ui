@@ -263,6 +263,15 @@
           </property>
           <item alignment="Qt::AlignTop">
            <widget class="QFrame" name="frame_top_menus">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>215</height>
+             </size>
+            </property>
+            <property name="mouseTracking">
+             <bool>false</bool>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -285,6 +294,19 @@
              <property name="bottomMargin">
               <number>0</number>
              </property>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>18</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:white;&quot;&gt;Wybierz model sieci&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
              <item>
               <widget class="QComboBox" name="modelComboBox">
                <property name="font">
@@ -525,8 +547,41 @@ QPushButton:hover {
               <property name="verticalSpacing">
                <number>15</number>
               </property>
-              <item row="5" column="0">
-               <widget class="QLabel" name="label_6">
+              <item row="1" column="1">
+               <widget class="QPushButton" name="openCameraButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>35</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="contextMenuPolicy">
+                 <enum>Qt::DefaultContextMenu</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Otwórz kamerę</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1" colspan="2">
+               <widget class="QLabel" name="detectedBreedLabel">
                 <property name="font">
                  <font>
                   <pointsize>15</pointsize>
@@ -536,7 +591,7 @@ QPushButton:hover {
                  <string notr="true">color: #FFF;</string>
                 </property>
                 <property name="text">
-                 <string>Wykryta rasa psa to:</string>
+                 <string/>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -573,24 +628,6 @@ QPushButton:hover {
                 </property>
                </widget>
               </item>
-              <item row="5" column="1" colspan="2">
-               <widget class="QLabel" name="detectedBreedLabel">
-                <property name="font">
-                 <font>
-                  <pointsize>15</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: #FFF;</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="1">
                <widget class="QPushButton" name="detectBreedButton">
                 <property name="sizePolicy">
@@ -615,36 +652,21 @@ QPushButton:hover {
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QPushButton" name="openCameraButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>35</height>
-                 </size>
-                </property>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_6">
                 <property name="font">
                  <font>
-                  <pointsize>12</pointsize>
+                  <pointsize>15</pointsize>
                  </font>
                 </property>
-                <property name="contextMenuPolicy">
-                 <enum>Qt::DefaultContextMenu</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
+                <property name="styleSheet">
+                 <string notr="true">color: #FFF;</string>
                 </property>
                 <property name="text">
-                 <string>Otwórz kamerę</string>
+                 <string>Wykryta rasa psa to:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
