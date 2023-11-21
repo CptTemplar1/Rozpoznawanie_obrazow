@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6afa9ed1-20e1-4bd8-97f1-5237c223b42b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/OtherCode/Utilities/ConfusionMatrix.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OtherCode/Utilities/dbTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OtherCode/Utilities/dbTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
       <recent name="D:\GitHub\Rozpoznawanie_obrazow\RozpoznawanieRasPsow\Code\Utilities" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ConfusionMatrix">
+  <component name="RunManager" selected="Python.main">
     <configuration name="ConfusionMatrix" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RozpoznawanieRasPsow" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,9 +159,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.ConfusionMatrix" />
         <item itemvalue="Python.dbTest" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +202,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$CreateDictionary.coverage" NAME="CreateDictionary Coverage Results" MODIFIED="1699552214285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$test.coverage" NAME="test Coverage Results" MODIFIED="1699906528932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$ConfusionMatrix.coverage" NAME="ConfusionMatrix Coverage Results" MODIFIED="1700592455538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OtherCode/Utilities" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$ConfusionMatrix.coverage" NAME="ConfusionMatrix Coverage Results" MODIFIED="1700592490277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OtherCode/Utilities" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$Yolov8.coverage" NAME="Yolov8 Coverage Results" MODIFIED="1700515301682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OtherCode/UseModels" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$dbTest.coverage" NAME="dbTest Coverage Results" MODIFIED="1700591535953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OtherCode/Utilities" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$InceptionV3__1_.coverage" NAME="InceptionV3 (1) Coverage Results" MODIFIED="1699875448782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UseModels" />
@@ -211,7 +210,7 @@
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$ownAI.coverage" NAME="ownAI Coverage Results" MODIFIED="1699552541963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1699901507285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$InceptionV3_own__1_.coverage" NAME="InceptionV3_own (1) Coverage Results" MODIFIED="1699889594750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code/UseModels" />
-    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1700589792827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$main.coverage" NAME="main Coverage Results" MODIFIED="1700599745303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RozpoznawanieRasPsow$InceptionV3_own.coverage" NAME="InceptionV3_own Coverage Results" MODIFIED="1699878937654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

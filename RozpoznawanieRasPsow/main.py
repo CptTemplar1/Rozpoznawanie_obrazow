@@ -17,12 +17,41 @@ from keras.src.saving.saving_api import load_model
 from ultralytics import YOLO
 import numpy as np
 import json
+import mysql.connector
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
 
 # GUI FILE
 from ui_main import Ui_MainWindow
 
 
+# Klasy do obsługi bazy danych
+#########################################################################################
+class DatabaseConnector:
+    def __init__(self):
+        self.connection = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="root",
+            database="RozpoznawanieRasPsow"
+        )
+        self.cursor = self.connection.cursor()
+
+    def insert_result_record(self, table_name, predicted_breed, actual_breed):
+        query = f"INSERT INTO {table_name} (predicted_breed, actual_breed) VALUES (%s, %s)"
+        values = (predicted_breed, actual_breed)
+        self.cursor.execute(query, values)
+        self.connection.commit()
+
+    def close_connection(self):
+        self.cursor.close()
+        self.connection.close()
+
 # Klasy do obsługi kamery w oddzielnym wątku
+#########################################################################################
 class CameraThread(QThread):
     change_pixmap_signal = Signal(np.ndarray)
 
@@ -89,6 +118,7 @@ class CameraWindow(QWidget):
 
 
 # Klasa głównego okna aplikacji
+#########################################################################################
 class MainWindow(QMainWindow):
     # Zmienna przechowująca ostatnio wczytany obraz w postaci Image
     lastly_uploaded_picture = None
@@ -103,10 +133,6 @@ class MainWindow(QMainWindow):
     elif platform.node() == "LAPTOP-SGU0S8R4":
         inceptionv3_own_model = load_model('C:/Users/dawch/Downloads/model_inception.h5')
 
-
-    device_name = platform.node()
-    print(f"Nazwa urządzenia: {device_name}")
-
     # Załadowanie słownika etykiet z pliku JSON dla naszego własnego modelu InceptionV3
     # Teraz można użyć tego słownika do mapowania indeksów na etykiety
     with open('Models/InceptionV3_own/class_indices.json') as json_file:
@@ -119,9 +145,12 @@ class MainWindow(QMainWindow):
 
     # Zmienna przechowująca aktualnie wybrany model
     selected_model = None
+    # Zmienna przechowująca nazwę tabeli w bazie danych dla aktualnie wybranego modelu
+    selected_model_table_name = None
 
-    def __init__(self):
+    def __init__(self, db_connector):
         QMainWindow.__init__(self)
+        self.db_connector = db_connector
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
@@ -166,6 +195,8 @@ class MainWindow(QMainWindow):
         self.show()
         ## ==> END ##
 
+# Funkcje związane z obsługą modeli i przewidywaniem rasy psa
+#########################################################################################
     # Funkcja aktualizująca etykietę oraz wybrany model na podstawie wybranego modelu w ComboBoxie
     def update_label_and_model(self):
         selected_model = self.ui.modelComboBox.currentText()
@@ -174,13 +205,16 @@ class MainWindow(QMainWindow):
         self.ui.selectedModelLabel.setStyleSheet(style)
         self.ui.selectedModelLabel.setText(f"{selected_model}")
 
-        # Ustawienie aktualnie wybranego modelu w zmiennej selected_model
+        # Ustawienie aktualnie wybranego modelu w zmiennej selected_model oraz nazwy tabeli w bazie danych dla tego modelu
         if self.ui.modelComboBox.currentIndex() == 0:
             self.selected_model = self.inceptionv3_model
+            self.selected_model_table_name = "inception_matrix"
         elif self.ui.modelComboBox.currentIndex() == 1:
             self.selected_model = self.inceptionv3_own_model
+            self.selected_model_table_name = "own_inception_matrix"
         elif self.ui.modelComboBox.currentIndex() == 2:
             self.selected_model = self.yolov8_own_model
+            self.selected_model_table_name = "own_yolo_matrix"
 
     # Funkcja wywoływana po kliknięciu przycisku rozpoznawania rasy psa
     # Sprawdza, który model jest wybrany i wywołuje odpowiednią funkcję
@@ -224,16 +258,15 @@ class MainWindow(QMainWindow):
             decoded_predictions = decode_predictions(predictions, top=1)[0]
             predicted_breed = decoded_predictions[0][1]
 
-            print(decoded_predictions)
-            #predicted_breed_code = decoded_predictions[0][0]
-            #predicted_breed = labels[predicted_breed_code]
-
             # Sprawdzenie, czy przewidywany kod rasy znajduje się w zbiorze etykiet dla naszego własnego modelu InceptionV3
             # Robimy to, bo pretrenowany model InceptionV3 rozpoznaje więcej rzeczy niż tylko rasy psów
             if predicted_breed.lower() in self.dog_breeds_list:
                 self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
             else:
-                self.ui.detectedBreedLabel.setText("Nie wykryto żadnej rasy psa")
+                self.ui.detectedBreedLabel.setText("Brak psa na zdjęciu")
+
+            # Po wykonaniu predykcji wyświetl okno dialogowe z pytaniem, czy model rozpoznał rasę psa poprawnie
+            self.show_confirmation_dialog()
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
@@ -252,6 +285,9 @@ class MainWindow(QMainWindow):
             predicted_breed_name = self.labels[str(predicted_breed_index)]
 
             self.ui.detectedBreedLabel.setText(f"{predicted_breed_name}")
+
+            # Po wykonaniu predykcji wyświetl okno dialogowe z pytaniem, czy model rozpoznał rasę psa poprawnie
+            self.show_confirmation_dialog()
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
@@ -272,10 +308,15 @@ class MainWindow(QMainWindow):
                 predicted_breed = result.names[box.cls[0].item()]
                 self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
             else:
-                self.ui.detectedBreedLabel.setText("Nie wykryto żadnej rasy psa")
+                self.ui.detectedBreedLabel.setText("Brak psa na zdjęciu")
+
+            # Po wykonaniu predykcji wyświetl okno dialogowe z pytaniem, czy model rozpoznał rasę psa poprawnie
+            self.show_confirmation_dialog()
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
+# Funkcje związane z kamerą i robieniem zdjęcia
+#########################################################################################
     # Konwersja numpy array na QPixmap
     def array_to_qpixmap(self, array):
         img = Image.fromarray(array)
@@ -297,8 +338,37 @@ class MainWindow(QMainWindow):
             img = Image.fromarray(cv_img)
             self.lastly_uploaded_picture = img
 
+# Funkcje związane z obsługą analizy otrzymanych wyników
+#########################################################################################
+    # Funkcja wyświetlająca okno dialogowe, w którym decydujemy czy model rozpoznał rasę psa poprawnie
+    def show_confirmation_dialog(self):
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle("Walidacja wyniku")
+        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa?")
+        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+
+        # Ustawienie niestandardowych etykiet dla przycisków
+        msg_box.setButtonText(QMessageBox.Yes, "Tak")
+        msg_box.setButtonText(QMessageBox.No, "Nie")
+
+        result = msg_box.exec()
+
+        if result == QMessageBox.Yes:
+            self.result_valid()
+        elif result == QMessageBox.No:
+            self.result_invalid()
+
+    # Funkcja dodająca do bazy danych wynik dla prawidłowo rozpoznanej rasy psa (dwie takie same wartości)
+    # Wszystkie litery w nazwie rasy psa są małe, aby uniknąc problemów z wielkością liter w różnych modelach
+    def result_valid(self):
+        self.db_connector.insert_result_record(self.selected_model_table_name, self.ui.detectedBreedLabel.text().lower(), self.ui.detectedBreedLabel.text().lower())
+
+    def result_invalid(self):
+        print("Niepoprawna predykcja")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
+    db_connector = DatabaseConnector()
+    window = MainWindow(db_connector)
     sys.exit(app.exec())
