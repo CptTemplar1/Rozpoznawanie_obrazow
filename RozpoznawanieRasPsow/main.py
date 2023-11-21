@@ -95,8 +95,17 @@ class MainWindow(QMainWindow):
 
     # Zmienne okreslające poszczególne modele sieci neuronowych
     inceptionv3_model = InceptionV3(weights='imagenet')
-    inceptionv3_own_model = load_model('C:/Users/micha/OneDrive/Pulpit/InceptionV3/model_inception.h5')
     yolov8_own_model = YOLO("Models/YoloV8_own/best.pt")
+    if platform.node() == "LAPTOP-BPEJBCSR":
+        inceptionv3_own_model = load_model('C:/Users/micha/OneDrive/Pulpit/InceptionV3/model_inception.h5')
+    elif platform.node() == "LAPTOP-KBH72I04":
+        inceptionv3_own_model = load_model('C:/Users/przem/Desktop/model_inception.h5')
+    elif platform.node() == "LAPTOP-SGU0S8R4":
+        inceptionv3_own_model = load_model('C:/Users/dawch/Downloads/model_inception.h5')
+
+
+    device_name = platform.node()
+    print(f"Nazwa urządzenia: {device_name}")
 
     # Załadowanie słownika etykiet z pliku JSON dla naszego własnego modelu InceptionV3
     # Teraz można użyć tego słownika do mapowania indeksów na etykiety
@@ -213,12 +222,15 @@ class MainWindow(QMainWindow):
 
             predictions = self.selected_model.predict(img)
             decoded_predictions = decode_predictions(predictions, top=1)[0]
-            predicted_breed_code = decoded_predictions[0][0]
-            predicted_breed = labels[predicted_breed_code]
+            predicted_breed = decoded_predictions[0][1]
+
+            print(decoded_predictions)
+            #predicted_breed_code = decoded_predictions[0][0]
+            #predicted_breed = labels[predicted_breed_code]
 
             # Sprawdzenie, czy przewidywany kod rasy znajduje się w zbiorze etykiet dla naszego własnego modelu InceptionV3
             # Robimy to, bo pretrenowany model InceptionV3 rozpoznaje więcej rzeczy niż tylko rasy psów
-            if predicted_breed_code in self.dog_breeds_list:
+            if predicted_breed.lower() in self.dog_breeds_list:
                 self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
             else:
                 self.ui.detectedBreedLabel.setText("Nie wykryto żadnej rasy psa")
