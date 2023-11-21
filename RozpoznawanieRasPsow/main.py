@@ -29,7 +29,7 @@ from ui_main import Ui_MainWindow
 
 
 # Klasy do obsługi bazy danych
-#########################################################################################
+##################################################################################################################################################################################
 class DatabaseConnector:
     def __init__(self):
         self.connection = mysql.connector.connect(
@@ -51,7 +51,7 @@ class DatabaseConnector:
         self.connection.close()
 
 # Klasy do obsługi kamery w oddzielnym wątku
-#########################################################################################
+##################################################################################################################################################################################
 class CameraThread(QThread):
     change_pixmap_signal = Signal(np.ndarray)
 
@@ -118,7 +118,7 @@ class CameraWindow(QWidget):
 
 
 # Klasa głównego okna aplikacji
-#########################################################################################
+##################################################################################################################################################################################
 class MainWindow(QMainWindow):
     # Zmienna przechowująca ostatnio wczytany obraz w postaci Image
     lastly_uploaded_picture = None
@@ -196,7 +196,7 @@ class MainWindow(QMainWindow):
         ## ==> END ##
 
 # Funkcje związane z obsługą modeli i przewidywaniem rasy psa
-#########################################################################################
+##################################################################################################################################################################################
     # Funkcja aktualizująca etykietę oraz wybrany model na podstawie wybranego modelu w ComboBoxie
     def update_label_and_model(self):
         selected_model = self.ui.modelComboBox.currentText()
@@ -316,7 +316,7 @@ class MainWindow(QMainWindow):
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
 # Funkcje związane z kamerą i robieniem zdjęcia
-#########################################################################################
+##################################################################################################################################################################################
     # Konwersja numpy array na QPixmap
     def array_to_qpixmap(self, array):
         img = Image.fromarray(array)
@@ -339,9 +339,10 @@ class MainWindow(QMainWindow):
             self.lastly_uploaded_picture = img
 
 # Funkcje związane z obsługą analizy otrzymanych wyników
-#########################################################################################
+##################################################################################################################################################################################
     # Funkcja wyświetlająca okno dialogowe, w którym decydujemy czy model rozpoznał rasę psa poprawnie
     def show_confirmation_dialog(self):
+
         msg_box = QMessageBox()
         msg_box.setWindowTitle("Walidacja wyniku")
         msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa?")
@@ -364,9 +365,49 @@ class MainWindow(QMainWindow):
         self.db_connector.insert_result_record(self.selected_model_table_name, self.ui.detectedBreedLabel.text().lower(), self.ui.detectedBreedLabel.text().lower())
 
     def result_invalid(self):
-        print("Niepoprawna predykcja")
+        self.show_dialog()
+        
+    # Funkcja wyświetlająca okno dialogowe w przypadku, gdy model rozpoznał rasę psa niepoprawnie
+    # Przekazuje do okna dialogowego nazwę rasy psa rozpoznanej przez model, listę ras psów, aby można było wybrać poprawną rasę psa
+    # Oraz nazwę tabeli w bazie danych dla aktualnie wybranego modelu i obiekt klasy DatabaseConnector
+    def show_dialog(self):
+        predicted_breed = self.ui.detectedBreedLabel.text().lower()
+        dialog = self.DogInfoDialog(predicted_breed, self.dog_breeds_list, self.selected_model_table_name, self.db_connector)
+        dialog.exec()
 
+    # Subklasa okna dialogowego, które pojawia się po kliknięciu przycisku Nie w oknie dialogowym z pytaniem o poprawność predykcji
+    class DogInfoDialog(QDialog):
+        def __init__(self, predicted_breed, dog_breeds_list, selected_model_table_name, db_connector, parent=None):
+            super().__init__(parent)
+            self.setWindowTitle("Wprowadź poprawną rasę psa, jeśli model się pomylił")
 
+            self.layout = QVBoxLayout()
+
+            self.detected_label = QLabel(f"Rasa psa wykryta przez model: {predicted_breed}")
+            self.layout.addWidget(self.detected_label)
+
+            self.actual_breed_label = QLabel("Rzeczywista rasa psa: ")
+            self.layout.addWidget(self.actual_breed_label)
+
+            self.actual_breed_combo = QComboBox()
+            self.actual_breed_combo.addItems(dog_breeds_list)  # Dodaj wszystkie elementy z listy dog_breeds_list do ComboBoxa
+            self.layout.addWidget(self.actual_breed_combo)
+
+            self.next_button = QPushButton("Zatwierdź")
+            self.next_button.clicked.connect(lambda: self.on_button_clicked(predicted_breed, selected_model_table_name))
+            self.layout.addWidget(self.next_button)
+
+            self.setLayout(self.layout)
+
+        # Funkcja wywoływana po kliknięciu przycisku Zatwierdź w oknie dialogowym
+        # Dodaje do bazy danych wynik dla nieprawidłowo rozpoznanej rasy psa
+        def on_button_clicked(self, predicted_breed, selected_model_table_name):
+            selected_breed = self.actual_breed_combo.currentText().lower()
+            db_connector.insert_result_record(selected_model_table_name, predicted_breed, selected_breed)
+            self.accept()
+
+# MAIN
+##################################################################################################################################################################################
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     db_connector = DatabaseConnector()
