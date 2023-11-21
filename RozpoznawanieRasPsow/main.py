@@ -143,8 +143,6 @@ class MainWindow(QMainWindow):
         dog_breeds_data = json.load(json_file)
         dog_breeds_list = dog_breeds_data.get("dog_breeds", [])
 
-    # Zmienna przechowująca aktualnie wybrany model
-    selected_model = None
     # Zmienna przechowująca nazwę tabeli w bazie danych dla aktualnie wybranego modelu
     selected_model_table_name = None
 
@@ -205,15 +203,12 @@ class MainWindow(QMainWindow):
         self.ui.selectedModelLabel.setStyleSheet(style)
         self.ui.selectedModelLabel.setText(f"{selected_model}")
 
-        # Ustawienie aktualnie wybranego modelu w zmiennej selected_model oraz nazwy tabeli w bazie danych dla tego modelu
+        # Ustawienie aktualnie nazwy tabeli w bazie danych dla tego modelu
         if self.ui.modelComboBox.currentIndex() == 0:
-            self.selected_model = self.inceptionv3_model
             self.selected_model_table_name = "inception_matrix"
         elif self.ui.modelComboBox.currentIndex() == 1:
-            self.selected_model = self.inceptionv3_own_model
             self.selected_model_table_name = "own_inception_matrix"
         elif self.ui.modelComboBox.currentIndex() == 2:
-            self.selected_model = self.yolov8_own_model
             self.selected_model_table_name = "own_yolo_matrix"
 
     # Funkcja wywoływana po kliknięciu przycisku rozpoznawania rasy psa
@@ -227,7 +222,7 @@ class MainWindow(QMainWindow):
             return
 
         if index == 0:
-            self.predict_dog_breed_inceptionV3()
+            self.predict_dog_breed_inceptionV3(True)
         elif index == 1:
             self.predict_dog_breed_inceptionV3_own()
         elif index == 2:
@@ -246,7 +241,8 @@ class MainWindow(QMainWindow):
             self.ui.uploadedPictureLabel.setPixmap(pixmap)
 
     # Funkcja do przewidywania rasy psa na podstawie obrazu przy pomocy modelu InceptionV3
-    def predict_dog_breed_inceptionV3(self):
+    # Przyjmuje parametr print_results, który określa, czy funkcja ma wyświetlić wynik w Labelu czy zwrócić go
+    def predict_dog_breed_inceptionV3(self, print_results):
         try:
             img = self.lastly_uploaded_picture.resize((299, 299))
             img_array = image.img_to_array(img)
@@ -254,19 +250,25 @@ class MainWindow(QMainWindow):
             img = np.expand_dims(img_array, axis=0)
             img = preprocess_input(img)
 
-            predictions = self.selected_model.predict(img)
+            predictions = self.inceptionv3_model.predict(img)
             decoded_predictions = decode_predictions(predictions, top=1)[0]
             predicted_breed = decoded_predictions[0][1]
+            if print_results:
+                # Sprawdzenie, czy przewidywany kod rasy znajduje się w zbiorze etykiet dla naszego własnego modelu InceptionV3
+                # Robimy to, bo pretrenowany model InceptionV3 rozpoznaje więcej rzeczy niż tylko rasy psów
+                if predicted_breed.lower() in self.dog_breeds_list:
+                    self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
+                else:
+                    self.ui.detectedBreedLabel.setText("Brak psa na zdjęciu")
 
-            # Sprawdzenie, czy przewidywany kod rasy znajduje się w zbiorze etykiet dla naszego własnego modelu InceptionV3
-            # Robimy to, bo pretrenowany model InceptionV3 rozpoznaje więcej rzeczy niż tylko rasy psów
-            if predicted_breed.lower() in self.dog_breeds_list:
-                self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
+                # Po wykonaniu predykcji wyświetl okno dialogowe z pytaniem, czy model rozpoznał rasę psa poprawnie
+                self.show_confirmation_dialog()
+
             else:
-                self.ui.detectedBreedLabel.setText("Brak psa na zdjęciu")
-
-            # Po wykonaniu predykcji wyświetl okno dialogowe z pytaniem, czy model rozpoznał rasę psa poprawnie
-            self.show_confirmation_dialog()
+                if predicted_breed.lower() in self.dog_breeds_list:
+                    return predicted_breed.lower()
+                else:
+                    return "Brak psa na zdjęciu"
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
@@ -279,7 +281,7 @@ class MainWindow(QMainWindow):
             img = np.expand_dims(img_array, axis=0)
             img = preprocess_input(img)
 
-            predictions = self.selected_model.predict(img)
+            predictions = self.inceptionv3_own_model.predict(img)
             predicted_breed_index = np.argmax(predictions)
             # Użyj słownika labels do przemapowania indeksu na nazwę rasy
             predicted_breed_name = self.labels[str(predicted_breed_index)]
@@ -293,7 +295,7 @@ class MainWindow(QMainWindow):
 
     def predict_dog_breed_yoloV8_own(self):
         try:
-            results = self.selected_model.predict(self.lastly_uploaded_picture)
+            results = self.yolov8_own_model.predict(self.lastly_uploaded_picture)
             result = results[0]
 
             # Wyświetla nazwę i zdjęcie wykrytej rasy psa, jeśli została wykryta
@@ -341,11 +343,13 @@ class MainWindow(QMainWindow):
 # Funkcje związane z obsługą analizy otrzymanych wyników
 ##################################################################################################################################################################################
     # Funkcja wyświetlająca okno dialogowe, w którym decydujemy czy model rozpoznał rasę psa poprawnie
+    # Na początku wykrywa rasę psa przy pomocy najlepszego modelu InceptionV3, aby dać wskazówkę użytkownikowi czy inny model się pomylił
     def show_confirmation_dialog(self):
+        proposed_actual_breed = self.predict_dog_breed_inceptionV3(False)
 
         msg_box = QMessageBox()
         msg_box.setWindowTitle("Walidacja wyniku")
-        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa?")
+        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa? \n\n Rasa psa zwrócona przez aktualnie wybrany model: " + self.ui.detectedBreedLabel.text().lower() + "\n\n Rzeczywista rasa psa proponowana przez pretrenowany model InceptionV3: " + proposed_actual_breed + "\n")
         msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
 
         # Ustawienie niestandardowych etykiet dla przycisków
@@ -357,39 +361,43 @@ class MainWindow(QMainWindow):
         if result == QMessageBox.Yes:
             self.result_valid()
         elif result == QMessageBox.No:
-            self.result_invalid()
+            self.result_invalid(proposed_actual_breed)
 
     # Funkcja dodająca do bazy danych wynik dla prawidłowo rozpoznanej rasy psa (dwie takie same wartości)
     # Wszystkie litery w nazwie rasy psa są małe, aby uniknąc problemów z wielkością liter w różnych modelach
     def result_valid(self):
         self.db_connector.insert_result_record(self.selected_model_table_name, self.ui.detectedBreedLabel.text().lower(), self.ui.detectedBreedLabel.text().lower())
 
-    def result_invalid(self):
-        self.show_dialog()
+    def result_invalid(self, proposed_actual_breed):
+        self.show_dialog(proposed_actual_breed)
         
     # Funkcja wyświetlająca okno dialogowe w przypadku, gdy model rozpoznał rasę psa niepoprawnie
     # Przekazuje do okna dialogowego nazwę rasy psa rozpoznanej przez model, listę ras psów, aby można było wybrać poprawną rasę psa
     # Oraz nazwę tabeli w bazie danych dla aktualnie wybranego modelu i obiekt klasy DatabaseConnector
-    def show_dialog(self):
+    def show_dialog(self, proposed_actual_breed):
         predicted_breed = self.ui.detectedBreedLabel.text().lower()
-        dialog = self.DogInfoDialog(predicted_breed, self.dog_breeds_list, self.selected_model_table_name, self.db_connector)
+        dialog = self.DogInfoDialog(predicted_breed, proposed_actual_breed, self.dog_breeds_list, self.selected_model_table_name, self.db_connector)
         dialog.exec()
 
     # Subklasa okna dialogowego, które pojawia się po kliknięciu przycisku Nie w oknie dialogowym z pytaniem o poprawność predykcji
     class DogInfoDialog(QDialog):
-        def __init__(self, predicted_breed, dog_breeds_list, selected_model_table_name, db_connector, parent=None):
+        def __init__(self, predicted_breed, proposed_actual_breed, dog_breeds_list, selected_model_table_name, db_connector, parent=None):
             super().__init__(parent)
             self.setWindowTitle("Wprowadź poprawną rasę psa, jeśli model się pomylił")
 
             self.layout = QVBoxLayout()
 
-            self.detected_label = QLabel(f"Rasa psa wykryta przez model: {predicted_breed}")
+            self.detected_label = QLabel(f"Rasa psa zwrócona przez aktualnie wybrany model: {predicted_breed}")
+            self.layout.addWidget(self.detected_label)
+
+            self.detected_label = QLabel(f"Rzeczywista rasa psa proponowana przez pretrenowany model InceptionV3:: {proposed_actual_breed}")
             self.layout.addWidget(self.detected_label)
 
             self.actual_breed_label = QLabel("Rzeczywista rasa psa: ")
             self.layout.addWidget(self.actual_breed_label)
 
             self.actual_breed_combo = QComboBox()
+            self.actual_breed_combo.addItem("Brak psa na zdjęciu")
             self.actual_breed_combo.addItems(dog_breeds_list)  # Dodaj wszystkie elementy z listy dog_breeds_list do ComboBoxa
             self.layout.addWidget(self.actual_breed_combo)
 
