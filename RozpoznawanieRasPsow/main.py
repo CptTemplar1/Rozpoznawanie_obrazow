@@ -214,11 +214,11 @@ class MainWindow(QMainWindow):
             predictions = self.selected_model.predict(img)
             decoded_predictions = decode_predictions(predictions, top=1)[0]
             predicted_breed_code = decoded_predictions[0][0]
+            predicted_breed = labels[predicted_breed_code]
 
             # Sprawdzenie, czy przewidywany kod rasy znajduje się w zbiorze etykiet dla naszego własnego modelu InceptionV3
             # Robimy to, bo pretrenowany model InceptionV3 rozpoznaje więcej rzeczy niż tylko rasy psów
             if predicted_breed_code in self.dog_breeds_list:
-                predicted_breed = labels[predicted_breed_code]
                 self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
             else:
                 self.ui.detectedBreedLabel.setText("Nie wykryto żadnej rasy psa")
@@ -247,35 +247,20 @@ class MainWindow(QMainWindow):
         try:
             results = self.selected_model.predict(self.lastly_uploaded_picture)
             result = results[0]
-            len(result.boxes)
-            box = result.boxes[0]
 
-            # Wypisywanie tylko jednego wyniku
-            # print("Object type:",box.cls[0])
-            # print("Coordinates:",box.xyxy[0])
-            # print("Probability:",box.conf[0])
-            # print(result.names)
+            # Wyświetla nazwę i zdjęcie wykrytej rasy psa, jeśli została wykryta
+            if len(result.boxes) > 0:
+                box = result.boxes[0]
 
-            # Wypisywanie wszystkich wyników
-            # for box in result.boxes:
-            #    class_id = result.names[box.cls[0].item()]
-            #    cords = box.xyxy[0].tolist()
-            #    cords = [round(x) for x in cords]
-            #    conf = round(box.conf[0].item(), 2)
-            #    print("Object type:", class_id)
-            #    print("Coordinates:", cords)
-            #    print("Probability:", conf)
-            #    print("---")
+                # Wyświetlanie obrazu z zaznaczonymi bounding boxami
+                pixmap = self.array_to_qpixmap(result.plot()[:, :, ::-1])
+                pixmap = pixmap.scaled(512, 512, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+                self.ui.uploadedPictureLabel.setPixmap(pixmap)
 
-            # Wyświetlanie obrazu z zaznaczonymi bounding boxami
-            pixmap = self.array_to_qpixmap(result.plot()[:, :, ::-1])
-            pixmap = pixmap.scaled(512, 512, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-            self.ui.uploadedPictureLabel.setPixmap(pixmap)
-
-            # Wyświetla nazwę wykrytej rasy psa, jeśli została wykryta
-            if result.names[box.cls[0].item()] != "":
                 predicted_breed = result.names[box.cls[0].item()]
                 self.ui.detectedBreedLabel.setText(f"{predicted_breed}")
+            else:
+                self.ui.detectedBreedLabel.setText("Nie wykryto żadnej rasy psa")
         except Exception as e:
             self.ui.detectedBreedLabel.setText(f"Błąd: {str(e)}")
 
