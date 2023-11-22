@@ -23,6 +23,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
+from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 # GUI FILE
 from ui_main import Ui_MainWindow
@@ -40,11 +41,18 @@ class DatabaseConnector:
         )
         self.cursor = self.connection.cursor()
 
+    # Funkcja dodająca rekord do tabeli statystyk dla danego modelu
     def insert_result_record(self, table_name, predicted_breed, actual_breed):
         query = f"INSERT INTO {table_name} (predicted_breed, actual_breed) VALUES (%s, %s)"
         values = (predicted_breed, actual_breed)
         self.cursor.execute(query, values)
         self.connection.commit()
+
+    # Funkcja pobierająca wszystkie rekordy z tabeli statystyk dla danego modelu
+    def get_all_results(self, table_name):
+        query = f"SELECT predicted_breed, actual_breed FROM {table_name}"
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
 
     def close_connection(self):
         self.cursor.close()
@@ -152,6 +160,9 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # Ustawienie domyślnego widoku przy starcie na pierwszą stronę
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_1)
+
         # Wywołanie metody ustawiającej wartość labela oraz model w zmiennej na podstawie wybranego modelu z ComboBoxa
         self.update_label_and_model()
         # Wywoływanie tej metody za każdym razem przy zmianie wybranego modelu w ComboBoxie
@@ -176,7 +187,7 @@ class MainWindow(QMainWindow):
 
         # PAGE 2
         ########################################################################
-        self.ui.btn_page_2.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_2))
+        self.ui.btn_page_2.clicked.connect(self.navigate_to_confusion_matrix_page)
         ########################################################################
 
         # PAGE 3
@@ -192,6 +203,31 @@ class MainWindow(QMainWindow):
         ## SHOW ==> MAIN WINDOW
         self.show()
         ## ==> END ##
+
+    # Funkcja przechodząca do strony Confusion Matrix i wywołująca funkcję generującą Confusion Matrix
+    def navigate_to_confusion_matrix_page(self):
+        self.generate_confusion_matrix()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_2)
+
+
+    # Funkcja generująca Confusion Matrix dla aktualnie wybranego modelu i wyświetlająca go w Labelu matrix_label jako PixMap
+    def generate_confusion_matrix(self):
+        # Pobranie danych z bazy danych
+        data = self.db_connector.get_all_results(self.selected_model_table_name)
+        df = pd.DataFrame(data, columns=['predicted_breed', 'actual_breed'])
+
+        # Tworzenie Confusion Matrix
+        conf_matrix = confusion_matrix(df['actual_breed'], df['predicted_breed'])
+
+        # Wizualizacja Confusion Matrix
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=np.unique(df['predicted_breed']),
+                    yticklabels=np.unique(df['actual_breed']))
+        plt.xlabel('Wykryta rasa psa')
+        plt.ylabel('Rzeczywista rasa psa')
+        plt.title('Confusion Matrix dla aktualnie wybranego modelu')
+        plt.show()
+
 
 # Funkcje związane z obsługą modeli i przewidywaniem rasy psa
 ##################################################################################################################################################################################

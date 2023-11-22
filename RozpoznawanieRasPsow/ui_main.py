@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainlwDhbu.ui'
+## Form generated from reading UI file 'ui_mainiTXrhQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -332,13 +332,11 @@ class Ui_MainWindow(object):
         self.page_2.setObjectName(u"page_2")
         self.verticalLayout_6 = QVBoxLayout(self.page_2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.label_2 = QLabel(self.page_2)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font3)
-        self.label_2.setStyleSheet(u"color: #FFF;")
-        self.label_2.setAlignment(Qt.AlignCenter)
+        self.matrix_label = QLabel(self.page_2)
+        self.matrix_label.setObjectName(u"matrix_label")
+        self.matrix_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_6.addWidget(self.label_2)
+        self.verticalLayout_6.addWidget(self.matrix_label)
 
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QWidget()
@@ -380,7 +378,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -396,8 +394,8 @@ class Ui_MainWindow(object):
         self.modelComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"W\u0142asny InceptionV3", None))
         self.modelComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"YOLOv8", None))
 
-        self.btn_page_1.setText(QCoreApplication.translate("MainWindow", u"Strona 1", None))
-        self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"Strona 2", None))
+        self.btn_page_1.setText(QCoreApplication.translate("MainWindow", u"WYKRYWANIE RASY PSA", None))
+        self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"CONFUSION MATRIX", None))
         self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Strona 3", None))
         self.btn_page_4.setText(QCoreApplication.translate("MainWindow", u"Strona 4", None))
         self.openCameraButton.setText(QCoreApplication.translate("MainWindow", u"Otw\u00f3rz kamer\u0119", None))
@@ -405,7 +403,7 @@ class Ui_MainWindow(object):
         self.uploadedPictureLabel.setText("")
         self.detectBreedButton.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciu", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Wykryta rasa psa to:", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"PAGE 2", None))
+        self.matrix_label.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"PAGE 3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"PAGE 4", None))
     # retranslateUi
