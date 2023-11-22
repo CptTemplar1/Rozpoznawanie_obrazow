@@ -1,5 +1,3 @@
-Select * From Statistics;
-
 Select * from test_matrix;
 
 Select * from inception_matrix;
