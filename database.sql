@@ -28,7 +28,7 @@ CREATE TABLE `inception_matrix` (
   `actual_breed` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `inception_matrix` (
 
 LOCK TABLES `inception_matrix` WRITE;
 /*!40000 ALTER TABLE `inception_matrix` DISABLE KEYS */;
-INSERT INTO `inception_matrix` VALUES (1,'golden_retriever','golden_retriever'),(2,'german_shepherd','german_shepherd'),(3,'german_shepherd','german_shepherd'),(4,'golden_retriever','golden_retriever'),(5,'golden_retriever','golden_retriever'),(6,'german_shepherd','affenpinscher'),(7,'german_shepherd','affenpinscher'),(8,'german_shepherd','afghan_hound'),(9,'german_shepherd','brak psa na zdjęciu'),(10,'standard_schnauzer','standard_schnauzer');
+INSERT INTO `inception_matrix` VALUES (1,'german_shepherd','german_shepherd');
 /*!40000 ALTER TABLE `inception_matrix` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ CREATE TABLE `own_inception_matrix` (
   `actual_breed` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `own_inception_matrix` (
 
 LOCK TABLES `own_inception_matrix` WRITE;
 /*!40000 ALTER TABLE `own_inception_matrix` DISABLE KEYS */;
-INSERT INTO `own_inception_matrix` VALUES (1,'labrador_retriever','labrador_retriever'),(2,'miniature_schnauzer','miniature_schnauzer');
+INSERT INTO `own_inception_matrix` VALUES (1,'german_shepherd','german_shepherd');
 /*!40000 ALTER TABLE `own_inception_matrix` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +80,7 @@ CREATE TABLE `own_yolo_matrix` (
   `actual_breed` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ CREATE TABLE `own_yolo_matrix` (
 
 LOCK TABLES `own_yolo_matrix` WRITE;
 /*!40000 ALTER TABLE `own_yolo_matrix` DISABLE KEYS */;
-INSERT INTO `own_yolo_matrix` VALUES (1,'great_pyrenees','great_pyrenees'),(2,'german_shepherd','german_shepherd');
+INSERT INTO `own_yolo_matrix` VALUES (1,'german_shepherd','german_shepherd');
 /*!40000 ALTER TABLE `own_yolo_matrix` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,4 +128,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-22 14:49:56
+-- Dump completed on 2023-11-22 15:12:27
