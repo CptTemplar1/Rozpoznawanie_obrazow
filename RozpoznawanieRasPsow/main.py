@@ -476,9 +476,11 @@ class MainWindow(QMainWindow):
 
         # Funkcja wywoływana po kliknięciu przycisku Zatwierdź w oknie dialogowym
         # Dodaje do bazy danych wynik dla nieprawidłowo rozpoznanej rasy psa
+        # Wynik jest dodawany w obie strony (a:b oraz b:a), aby ułatwić późniejsze generowanie Confusion Matrix
         def on_button_clicked(self, predicted_breed, selected_model_table_name):
             selected_breed = self.actual_breed_combo.currentText().lower()
             db_connector.insert_result_record(selected_model_table_name, predicted_breed, selected_breed)
+            db_connector.insert_result_record(selected_model_table_name, selected_breed, predicted_breed)
             self.accept()
 
 # MAIN
