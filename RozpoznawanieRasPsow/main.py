@@ -214,10 +214,14 @@ class MainWindow(QMainWindow):
 
 
     # Funkcja generująca Confusion Matrix dla aktualnie wybranego modelu i wyświetlająca go w Labelu matrix_label jako PixMap
+    # Funkcja generująca Confusion Matrix dla aktualnie wybranego modelu i wyświetlająca go w Labelu matrix_label jako PixMap
     def generate_confusion_matrix(self):
         # Pobranie danych z bazy danych
         data = self.db_connector.get_all_results(self.selected_model_table_name)
         df = pd.DataFrame(data, columns=['predicted_breed', 'actual_breed'])
+
+        # Zestaw unikalnych nazw ras psów
+        unique_breeds = set(df['predicted_breed'].unique()) | set(df['actual_breed'].unique())
 
         # Tworzenie Confusion Matrix
         conf_matrix = confusion_matrix(df['actual_breed'], df['predicted_breed'])
@@ -225,14 +229,17 @@ class MainWindow(QMainWindow):
         # Wizualizacja Confusion Matrix
         plt.figure(figsize=(10, 8))
         sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues',
-                    xticklabels=np.unique(df['predicted_breed']),
-                    yticklabels=np.unique(df['actual_breed']))
+                    xticklabels=sorted(unique_breeds),
+                    yticklabels=sorted(unique_breeds))
+
         plt.xlabel('Wykryta rasa psa')
         plt.ylabel('Rzeczywista rasa psa')
         plt.title('Confusion Matrix dla aktualnie wybranego modelu')
 
-        plt.xticks(rotation=45, fontsize=10)  # Obrót etykiet osi X i zmniejszenie rozmiaru czcionki
-        plt.yticks(rotation=45, fontsize=10)  # Obrót etykiet osi Y i zmniejszenie rozmiaru czcionki
+        #plt.xticks(rotation=45, fontsize=10)  # Obrót etykiet osi X i zmniejszenie rozmiaru czcionki
+        #plt.yticks(rotation=45, fontsize=10)  # Obrót etykiet osi Y i zmniejszenie rozmiaru czcionki
+        plt.xticks(fontsize=8)  # Obrót etykiet osi X i zmniejszenie rozmiaru czcionki
+        plt.yticks(fontsize=8)  # Obrót etykiet osi Y i zmniejszenie rozmiaru czcionki
         plt.subplots_adjust(left=0.2, bottom=0.25)  # Dostosowanie marginesów z lewej i u dołu
 
         # Zapisanie wykresu do bufora tymczasowego
@@ -476,11 +483,9 @@ class MainWindow(QMainWindow):
 
         # Funkcja wywoływana po kliknięciu przycisku Zatwierdź w oknie dialogowym
         # Dodaje do bazy danych wynik dla nieprawidłowo rozpoznanej rasy psa
-        # Wynik jest dodawany w obie strony (a:b oraz b:a), aby ułatwić późniejsze generowanie Confusion Matrix
         def on_button_clicked(self, predicted_breed, selected_model_table_name):
             selected_breed = self.actual_breed_combo.currentText().lower()
             db_connector.insert_result_record(selected_model_table_name, predicted_breed, selected_breed)
-            db_connector.insert_result_record(selected_model_table_name, selected_breed, predicted_breed)
             self.accept()
 
 # MAIN
