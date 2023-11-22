@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainiTXrhQ.ui'
+## Form generated from reading UI file 'ui_mainEAAVpB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -125,6 +125,8 @@ class Ui_MainWindow(object):
         self.label_7 = QLabel(self.frame_top_menus)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMinimumSize(QSize(0, 18))
+        self.label_7.setAlignment(Qt.AlignCenter)
+        self.label_7.setMargin(10)
 
         self.verticalLayout_4.addWidget(self.label_7)
 
@@ -138,58 +140,74 @@ class Ui_MainWindow(object):
         self.modelComboBox.setFont(font1)
         self.modelComboBox.setAutoFillBackground(False)
         self.modelComboBox.setStyleSheet(u"QComboBox {\n"
-"    border: 1px solid gray;\n"
+"    border: 1px solid #555555; /* zmie\u0144 kolor obramowania na ciemniejszy */\n"
 "    border-radius: 3px;\n"
 "    padding: 1px 18px 1px 3px;\n"
 "    min-width: 6em;\n"
+"    background: #333333; /* zmie\u0144 kolor t\u0142a na ciemniejszy */\n"
+"    color: #FFFFFF; /* zmie\u0144 kolor tekstu na ja\u015bniejszy */\n"
 "}\n"
 "\n"
 "QComboBox:editable {\n"
-"    background: white;\n"
+"    background: #444444; /* zmie\u0144 kolor t\u0142a dla trybu edycji */\n"
+"    color: #FFFFFF; /* zmie\u0144 kolor tekstu na ja\u015bniejszy */\n"
 "}\n"
 "\n"
 "QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
-"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #555555, stop: 0.4 #444444,\n"
+"                                stop: 0.5 #333333, stop: 1.0 #222222); /* dostosuj gradient t\u0142a */\n"
 "}\n"
 "\n"
-"/* QComboBox gets the \"on\" state when the popup is open */\n"
 "QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
 "    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                stop: 0 #D3D3D3, stop: 0.4 #D8D8D8,\n"
-"                                stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);\n"
+"                                stop: 0 #222222, st"
+                        "op: 0.4 #333333,\n"
+"                                stop: 0.5 #444444, stop: 1.0 #555555); /* dostosuj gradient t\u0142a dla stanu \"on\" */\n"
 "}\n"
 "\n"
-"QComboBox:on { /* shift the text when the popup opens */\n"
+"QComboBox:on {\n"
 "    padding-top: 3px;\n"
 "    padding-left: 4px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
 "    subcontrol-origin: padding;\n"
-""
-                        "    subcontrol-position: top right;\n"
+"    subcontrol-position: top right;\n"
 "    width: 15px;\n"
-"\n"
 "    border-left-width: 1px;\n"
-"    border-left-color: darkgray;\n"
-"    border-left-style: solid; /* just a single line */\n"
-"    border-top-right-radius: 3px; /* same radius as the QComboBox */\n"
+"    border-left-color: #555555; /* zmie\u0144 kolor obramowania strza\u0142ki */\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
 "    border-bottom-right-radius: 3px;\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
 "    image: url(/usr/share/icons/crystalsvg/16x16/actions/1downarrow.png);\n"
+"    width: 12px; /* dostosuj szeroko\u015b\u0107 strza\u0142ki */\n"
+"    height: 12px; /* dostosuj wysoko\u015b\u0107 strza\u0142ki */\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
+"QComboBox::down-arrow:on {\n"
 "    top: 1px;\n"
 "    left: 1px;\n"
-"}")
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: "
+                        "0, y2: 1,\n"
+"                                stop: 0 #FFFFFF, stop: 0.4 #DDDDDD,\n"
+"                                stop: 0.5 #CCCCCC, stop: 1.0 #AAAAAA); /* jasny gradient bia\u0142o-szary dla menu rozwijanego */\n"
+"    selection-background-color: #555555; /* kolor t\u0142a zaznaczonej opcji */\n"
+"}\n"
+"")
         self.modelComboBox.setEditable(False)
 
         self.verticalLayout_4.addWidget(self.modelComboBox)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer)
 
         self.btn_page_1 = QPushButton(self.frame_top_menus)
         self.btn_page_1.setObjectName(u"btn_page_1")
@@ -285,6 +303,9 @@ class Ui_MainWindow(object):
         self.openCameraButton.setContextMenuPolicy(Qt.DefaultContextMenu)
         self.openCameraButton.setLayoutDirection(Qt.LeftToRight)
         self.openCameraButton.setAutoFillBackground(False)
+        self.openCameraButton.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(0, 170, 255);\n"
+"}")
 
         self.gridLayout.addWidget(self.openCameraButton, 1, 1, 1, 1)
 
@@ -316,6 +337,9 @@ class Ui_MainWindow(object):
         self.detectBreedButton.setSizePolicy(sizePolicy)
         self.detectBreedButton.setMaximumSize(QSize(400, 50))
         self.detectBreedButton.setFont(font2)
+        self.detectBreedButton.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(0, 170, 255);\n"
+"}")
 
         self.gridLayout.addWidget(self.detectBreedButton, 4, 1, 1, 1)
 
@@ -331,9 +355,13 @@ class Ui_MainWindow(object):
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
         self.verticalLayout_6 = QVBoxLayout(self.page_2)
+        self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.matrix_label = QLabel(self.page_2)
         self.matrix_label.setObjectName(u"matrix_label")
+        self.matrix_label.setFont(font3)
+        self.matrix_label.setStyleSheet(u"color: #FFF;")
         self.matrix_label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.matrix_label)
@@ -390,7 +418,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">Wybrany model sieci: </span></p></body></html>", None))
         self.selectedModelLabel.setText("")
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:9pt; font-weight:600; color:white;\">Wybierz model sieci</span></p></body></html>", None))
-        self.modelComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Pretrenowany InceptionV3", None))
+        self.modelComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"InceptionV3", None))
         self.modelComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"W\u0142asny InceptionV3", None))
         self.modelComboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"YOLOv8", None))
 

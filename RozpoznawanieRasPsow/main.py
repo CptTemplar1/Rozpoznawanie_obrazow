@@ -24,6 +24,7 @@ import pandas as pd
 import seaborn as sns
 import numpy as np
 from matplotlib.backends.backend_agg import FigureCanvasAgg
+import io
 
 # GUI FILE
 from ui_main import Ui_MainWindow
@@ -204,10 +205,12 @@ class MainWindow(QMainWindow):
         self.show()
         ## ==> END ##
 
+# Funkcje związane z przechodzeniem do strony Confusion Matrix i generowaniem Confusion Matrix
+##################################################################################################################################################################################
     # Funkcja przechodząca do strony Confusion Matrix i wywołująca funkcję generującą Confusion Matrix
     def navigate_to_confusion_matrix_page(self):
-        self.generate_confusion_matrix()
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_2)
+        self.generate_confusion_matrix()
 
 
     # Funkcja generująca Confusion Matrix dla aktualnie wybranego modelu i wyświetlająca go w Labelu matrix_label jako PixMap
@@ -221,17 +224,39 @@ class MainWindow(QMainWindow):
 
         # Wizualizacja Confusion Matrix
         plt.figure(figsize=(10, 8))
-        sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=np.unique(df['predicted_breed']),
+        sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues',
+                    xticklabels=np.unique(df['predicted_breed']),
                     yticklabels=np.unique(df['actual_breed']))
         plt.xlabel('Wykryta rasa psa')
         plt.ylabel('Rzeczywista rasa psa')
         plt.title('Confusion Matrix dla aktualnie wybranego modelu')
-        plt.show()
+
+        plt.xticks(rotation=45, fontsize=10)  # Obrót etykiet osi X i zmniejszenie rozmiaru czcionki
+        plt.yticks(rotation=45, fontsize=10)  # Obrót etykiet osi Y i zmniejszenie rozmiaru czcionki
+        plt.subplots_adjust(left=0.2, bottom=0.25)  # Dostosowanie marginesów z lewej i u dołu
+
+        # Zapisanie wykresu do bufora tymczasowego
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png')
+        buf.seek(0)
+
+        # Wczytanie PixMap z bufora
+        pixmap = QPixmap()
+        pixmap.loadFromData(buf.getvalue())
+        pixmap = pixmap.scaled(self.ui.matrix_label.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+
+        # Ustawienie PixMap w QLabel
+        self.ui.matrix_label.setPixmap(pixmap)
+
+        # Czyszczenie bufora i zamykanie plot
+        buf.close()
+        plt.close()
 
 
 # Funkcje związane z obsługą modeli i przewidywaniem rasy psa
 ##################################################################################################################################################################################
-    # Funkcja aktualizująca etykietę oraz wybrany model na podstawie wybranego modelu w ComboBoxie
+    # Funkcja aktualizująca etykietę oraz nazwę tabeli dla wybranego modelu na podstawie wybranego modelu w ComboBoxie
+    # Aktualizuje również Confusion Matrix
     def update_label_and_model(self):
         selected_model = self.ui.modelComboBox.currentText()
         # Ustawienie formatowania etykiety
@@ -246,6 +271,8 @@ class MainWindow(QMainWindow):
             self.selected_model_table_name = "own_inception_matrix"
         elif self.ui.modelComboBox.currentIndex() == 2:
             self.selected_model_table_name = "own_yolo_matrix"
+        # Na koniec (aby niepotrzebnie nie blokować wyświetlania innych danych) aktualizuje Confusion Matrix
+        self.generate_confusion_matrix()
 
     # Funkcja wywoływana po kliknięciu przycisku rozpoznawania rasy psa
     # Sprawdza, który model jest wybrany i wywołuje odpowiednią funkcję
@@ -254,7 +281,11 @@ class MainWindow(QMainWindow):
 
         # Sprawdź, czy lastly_uploaded_picture jest puste przed wywołaniem funkcji, aby upewnić się, że obraz został wczytany
         if self.lastly_uploaded_picture is None:
-            QMessageBox.warning(self, 'Błąd', 'Proszę wczytać zdjęcie przed próbą uruchomienia rozpoznawania rasy psa.')
+            msg_box = QMessageBox()
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setWindowTitle("NIE DODANO ZDJĘCIA")
+            msg_box.setText("Proszę wczytać zdjęcie przed próbą uruchomienia rozpoznawania rasy psa.")
+            msg_box.exec()
             return
 
         if index == 0:
@@ -385,7 +416,7 @@ class MainWindow(QMainWindow):
 
         msg_box = QMessageBox()
         msg_box.setWindowTitle("Walidacja wyniku")
-        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa? /n/n Rasa psa zwrócona przez aktualnie wybrany model: " + self.ui.detectedBreedLabel.text().lower() + "/n/n Rzeczywista rasa psa proponowana przez pretrenowany model InceptionV3: " + proposed_actual_breed + "/n")
+        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa? \n \n Rasa psa zwrócona przez aktualnie wybrany model: " + self.ui.detectedBreedLabel.text().lower() + "\n\n Rzeczywista rasa psa proponowana przez pretrenowany model InceptionV3: " + proposed_actual_breed + "\n")
         msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
 
         # Ustawienie niestandardowych etykiet dla przycisków
