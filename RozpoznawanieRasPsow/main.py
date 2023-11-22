@@ -127,7 +127,7 @@ class MainWindow(QMainWindow):
     inceptionv3_model = InceptionV3(weights='imagenet')
     yolov8_own_model = YOLO("Models/YoloV8_own/best.pt")
     if platform.node() == "LAPTOP-BPEJBCSR":
-        inceptionv3_own_model = load_model('C:/Users/micha/OneDrive/Pulpit/InceptionV3/model_inception.h5')
+        inceptionv3_own_model = load_model('D:/Moje dane/Studia/Semestr_VII/Rozpoznawanie_mowy_i_obrazu/Projekt/InceptionV3/InceptionV3_own_10epochs/InceptionV3_10epochs.h5')
     elif platform.node() == "LAPTOP-KBH72I04":
         inceptionv3_own_model = load_model('C:/Users/przem/Desktop/model_inception.h5')
     elif platform.node() == "LAPTOP-SGU0S8R4":
@@ -349,7 +349,7 @@ class MainWindow(QMainWindow):
 
         msg_box = QMessageBox()
         msg_box.setWindowTitle("Walidacja wyniku")
-        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa? \n\n Rasa psa zwrócona przez aktualnie wybrany model: " + self.ui.detectedBreedLabel.text().lower() + "\n\n Rzeczywista rasa psa proponowana przez pretrenowany model InceptionV3: " + proposed_actual_breed + "\n")
+        msg_box.setText("Czy rasa psa rozpoznana przez model zgadza się z prawdziwą rasą psa? /n/n Rasa psa zwrócona przez aktualnie wybrany model: " + self.ui.detectedBreedLabel.text().lower() + "/n/n Rzeczywista rasa psa proponowana przez pretrenowany model InceptionV3: " + proposed_actual_breed + "/n")
         msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
 
         # Ustawienie niestandardowych etykiet dla przycisków
