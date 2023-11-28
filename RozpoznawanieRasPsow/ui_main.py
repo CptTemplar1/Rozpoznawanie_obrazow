@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainEAAVpB.ui'
+## Form generated from reading UI file 'ui_mainglLRfY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -237,37 +237,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.btn_page_2)
 
-        self.btn_page_3 = QPushButton(self.frame_top_menus)
-        self.btn_page_3.setObjectName(u"btn_page_3")
-        self.btn_page_3.setMinimumSize(QSize(0, 40))
-        self.btn_page_3.setStyleSheet(u"QPushButton {\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	border: 0px solid;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}")
-
-        self.verticalLayout_4.addWidget(self.btn_page_3)
-
-        self.btn_page_4 = QPushButton(self.frame_top_menus)
-        self.btn_page_4.setObjectName(u"btn_page_4")
-        self.btn_page_4.setMinimumSize(QSize(0, 40))
-        self.btn_page_4.setAutoFillBackground(False)
-        self.btn_page_4.setStyleSheet(u"QPushButton {\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	border: 0px solid;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}")
-        self.btn_page_4.setCheckable(True)
-        self.btn_page_4.setChecked(True)
-
-        self.verticalLayout_4.addWidget(self.btn_page_4)
-
 
         self.verticalLayout_3.addWidget(self.frame_top_menus, 0, Qt.AlignTop)
 
@@ -367,32 +336,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addWidget(self.matrix_label)
 
         self.stackedWidget.addWidget(self.page_2)
-        self.page_3 = QWidget()
-        self.page_3.setObjectName(u"page_3")
-        self.verticalLayout_8 = QVBoxLayout(self.page_3)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.label = QLabel(self.page_3)
-        self.label.setObjectName(u"label")
-        self.label.setFont(font3)
-        self.label.setStyleSheet(u"color: #FFF;")
-        self.label.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_8.addWidget(self.label)
-
-        self.stackedWidget.addWidget(self.page_3)
-        self.page_4 = QWidget()
-        self.page_4.setObjectName(u"page_4")
-        self.verticalLayout_11 = QVBoxLayout(self.page_4)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.label_4 = QLabel(self.page_4)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font3)
-        self.label_4.setStyleSheet(u"color: #FFF;")
-        self.label_4.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_11.addWidget(self.label_4)
-
-        self.stackedWidget.addWidget(self.page_4)
 
         self.horizontalLayout_5.addWidget(self.stackedWidget)
 
@@ -424,15 +367,11 @@ class Ui_MainWindow(object):
 
         self.btn_page_1.setText(QCoreApplication.translate("MainWindow", u"WYKRYWANIE RASY PSA", None))
         self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"CONFUSION MATRIX", None))
-        self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"Strona 3", None))
-        self.btn_page_4.setText(QCoreApplication.translate("MainWindow", u"Strona 4", None))
         self.openCameraButton.setText(QCoreApplication.translate("MainWindow", u"Otw\u00f3rz kamer\u0119", None))
         self.detectedBreedLabel.setText("")
         self.uploadedPictureLabel.setText("")
         self.detectBreedButton.setText(QCoreApplication.translate("MainWindow", u"Naci\u015bnij aby wykry\u0107 ras\u0119 psa na zdj\u0119ciu", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Wykryta rasa psa to:", None))
         self.matrix_label.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"PAGE 3", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"PAGE 4", None))
     # retranslateUi
 

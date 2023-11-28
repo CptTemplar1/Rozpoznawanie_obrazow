@@ -191,19 +191,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_page_2.clicked.connect(self.navigate_to_confusion_matrix_page)
         ########################################################################
 
-        # PAGE 3
-        ########################################################################
-        self.ui.btn_page_3.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_3))
-        ########################################################################
-
-        # PAGE 4
-        ########################################################################
-        self.ui.btn_page_4.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_4))
-        ########################################################################
-
-        ## SHOW ==> MAIN WINDOW
+        # Pokaż główne okno
         self.show()
-        ## ==> END ##
 
 # Funkcje związane z przechodzeniem do strony Confusion Matrix i generowaniem Confusion Matrix
 ##################################################################################################################################################################################
