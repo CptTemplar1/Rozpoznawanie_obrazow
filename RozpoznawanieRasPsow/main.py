@@ -37,7 +37,7 @@ class DatabaseConnector:
         self.connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="root",
+            password="",
             database="RozpoznawanieRasPsow"
         )
         self.cursor = self.connection.cursor()
@@ -338,7 +338,7 @@ class MainWindow(QMainWindow):
     # Funkcja do przewidywania rasy psa na podstawie obrazu przy pomocy naszego własnego modelu InceptionV3
     def predict_dog_breed_inceptionV3_own(self):
         try:
-            img = self.lastly_uploaded_picture.resize((224, 224))
+            img = self.lastly_uploaded_picture.resize((299, 299))
             img_array = image.img_to_array(img)
 
             img = np.expand_dims(img_array, axis=0)
