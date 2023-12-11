@@ -136,7 +136,7 @@ class MainWindow(QMainWindow):
     inceptionv3_model = InceptionV3(weights='imagenet')
     yolov8_own_model = YOLO("Models/YoloV8_own/best.pt")
     if platform.node() == "LAPTOP-BPEJBCSR":
-        inceptionv3_own_model = load_model('D:/Moje dane/Studia/Semestr_VII/Rozpoznawanie_mowy_i_obrazu/Projekt/InceptionV3/InceptionV3_own_60epochs/InceptionV3_60epochs.h5')
+        inceptionv3_own_model = load_model('D:/Moje dane/Studia/Semestr_VII/Rozpoznawanie_mowy_i_obrazu/Projekt/InceptionV3/InceptionV3_own_60epochs/model_inception_60epochs.h5')
     elif platform.node() == "LAPTOP-KBH72I04":
         inceptionv3_own_model = load_model('C:/Users/przem/Desktop/model_inception.h5')
     elif platform.node() == "LAPTOP-SGU0S8R4":
