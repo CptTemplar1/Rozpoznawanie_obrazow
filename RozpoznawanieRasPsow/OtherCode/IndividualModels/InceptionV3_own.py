@@ -12,7 +12,7 @@ from keras.preprocessing import image
 from keras.models import load_model
 
 # Wczytaj swój model z pliku inception_model.h5
-custom_model = load_model('C:/Users/micha/OneDrive/Pulpit/AI/model_inception.h5')
+custom_model = load_model('D:/Moje dane/Studia/Semestr_VII/Rozpoznawanie_mowy_i_obrazu/Projekt/InceptionV3/InceptionV3_own_10epochs/InceptionV3_10epochs.h5')
 
 # Załaduj pre-trenowany model InceptionV3
 model = InceptionV3(weights='imagenet')
